@@ -1,4 +1,4 @@
-import Card from "../Card/Card";
+import { Card } from "../Card/Card.jsx";
 
 export const Column = ({ name, cards }) => {
   return (
@@ -18,6 +18,4 @@ export const Column = ({ name, cards }) => {
       </div>
     </div>
   );
-}
-
-
+};

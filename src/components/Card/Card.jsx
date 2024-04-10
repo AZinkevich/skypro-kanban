@@ -1,4 +1,4 @@
-function Card({ cardTheme, cardTitle, cardThemeStyle }) {
+export const Card = ({ cardTheme, cardTitle, cardThemeStyle }) => {
   return (
     <div className="cards__item">
       <div className="cards__card card">
@@ -53,6 +53,4 @@ function Card({ cardTheme, cardTitle, cardThemeStyle }) {
       </div>
     </div>
   );
-}
-
-export default Card;
+};
