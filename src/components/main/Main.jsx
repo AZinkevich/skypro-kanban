@@ -33,7 +33,7 @@ function Main() {
               name={"В работе"}
               cards={
                 <Card
-                  cardTheme={"Сopywhriting"}
+                  cardTheme={"Сopywriting"}
                   cardTitle={"Название задачи"}
                   cardStyle={"card__theme _purple"}
                   cardThemeStyle={"_purple"}
