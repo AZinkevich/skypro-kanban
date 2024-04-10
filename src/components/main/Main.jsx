@@ -2,6 +2,12 @@ import Column from "../column/Colunm";
 import Card from "../card/Card";
 
 function Main() {
+// const tasks = [{theme: "Wed Design",
+// title: "Название задачи",
+// style: "card__theme _orange",
+// themeStyle: "_orange",
+// }]
+
   return (
     <main className="main">
       <div className="container">
@@ -13,7 +19,6 @@ function Main() {
                 <Card
                   cardTheme={"Wed Design"}
                   cardTitle={"Название задачи"}
-                  cardStyle={"card__theme _orange"}
                   cardThemeStyle={"_orange"}
                 />
               }
@@ -24,7 +29,6 @@ function Main() {
                 <Card
                   cardTheme={"Research"}
                   cardTitle={"Название задачи"}
-                  cardStyle={"card__theme _green"}
                   cardThemeStyle={"_green"}
                 />
               }
@@ -35,7 +39,6 @@ function Main() {
                 <Card
                   cardTheme={"Сopywriting"}
                   cardTitle={"Название задачи"}
-                  cardStyle={"card__theme _purple"}
                   cardThemeStyle={"_purple"}
                 />
               }
@@ -46,7 +49,6 @@ function Main() {
                 <Card
                   cardTheme={"Research"}
                   cardTitle={"Название задачи"}
-                  cardStyle={"card__theme _orange"}
                   cardThemeStyle={"_orange"}
                 />
               }
@@ -57,7 +59,6 @@ function Main() {
                 <Card
                   cardTheme={"Research"}
                   cardTitle={"Название задачи"}
-                  cardStyle={"card__theme _green"}
                   cardThemeStyle={"_green"}
                 />
               }

@@ -1,6 +1,6 @@
 import CalendarContent from '../../calendar/Calendar.jsx'
 
-function PopBrowse() {
+export const PopBrowse = () => {
 return    <div className="pop-browse" id="popBrowse">
     <div className="pop-browse__container">
       <div className="pop-browse__block">
@@ -138,4 +138,3 @@ return    <div className="pop-browse" id="popBrowse">
   </div>
 }
 
-export default PopBrowse;

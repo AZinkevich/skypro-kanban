@@ -1,9 +1,9 @@
-function Card({ cardTheme, cardTitle, cardStyle, cardThemeStyle }) {
+function Card({ cardTheme, cardTitle, cardThemeStyle }) {
   return (
     <div className="cards__item">
       <div className="cards__card card">
         <div className="card__group">
-          <div className={cardStyle}>
+          <div className={`card__theme ${cardThemeStyle}`}>
             <p className={cardThemeStyle}>{cardTheme}</p>
           </div>
           <a href="#popBrowse" target="_self">
