@@ -4,8 +4,12 @@ import { PopBrowse } from "./components/popups/PopBrowse/PopBrowse.jsx";
 import { PopExit } from "./components/popups/PopExit/PopExit.jsx";
 import { PopNewCard } from "./components/popups/PopNewCard/PopNewCard.jsx";
 import { Main } from "./components/Main/Main.jsx";
+import { useState } from "react";
+import {tasks} from "./data.js";
 
 function App() {
+
+  const [cards, setCards] = useState(tasks)
 
   return (
     <>
@@ -16,7 +20,7 @@ function App() {
         <PopBrowse />
         {/* pop-up end*/}
         <Header />
-        <Main />
+        <Main cards={cards} />
       </div>
     </>
   );
