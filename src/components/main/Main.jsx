@@ -2,7 +2,7 @@ import { Column } from "../Column/Colunm.jsx";
 //import {tasks} from "../../data.js"
 
 
-export const Main = ({cards}) => {
+export const Main = ({cards, isLoading}) => {
   
 
   return (
@@ -10,26 +10,30 @@ export const Main = ({cards}) => {
       <div className="container">
         <div className="main__block">
           <div className="main__content">
+           {isLoading ? "Загрузка..." : (
+            <> 
             <Column
-              name={"Без статуса"}
-              cards={cards.filter((task) => task.name === "Без статуса")}
-            />
-            <Column
-              name={"Нужно сделать"}
-              cards={cards.filter((task) => task.name === "Нужно сделать")}
-            />
-            <Column
-              name={"В работе"}
-              cards={cards.filter((task) => task.name === "В работе")}
-            />
-            <Column
-              name={"Тестирование"}
-              cards={cards.filter((task) => task.name === "Тестирование")}
-            />
-            <Column
-              name={"Готово"}
-              cards={cards.filter((task) => task.name === "Готово")}
-            />
+            status={"Без статуса"}
+            cards={cards.filter((task) => task.status === "Без статуса")}
+          />
+          <Column
+            status={"Нужно сделать"}
+            cards={cards.filter((task) => task.status === "Нужно сделать")}
+          />
+          <Column
+            status={"В работе"}
+            cards={cards.filter((task) => task.status === "В работе")}
+          />
+          <Column
+            status={"Тестирование"}
+            cards={cards.filter((task) => task.status === "Тестирование")}
+          />
+          <Column
+            status={"Готово"}
+            cards={cards.filter((task) => task.status === "Готово")}
+          />
+          </>
+           )}
           </div>
         </div>
       </div>

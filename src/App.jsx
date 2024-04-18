@@ -4,29 +4,37 @@ import { PopBrowse } from "./components/popups/PopBrowse/PopBrowse.jsx";
 import { PopExit } from "./components/popups/PopExit/PopExit.jsx";
 import { PopNewCard } from "./components/popups/PopNewCard/PopNewCard.jsx";
 import { Main } from "./components/Main/Main.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {tasks} from "./data.js";
 
 function App() {
 
   const [cards, setCards] = useState(tasks)
+  const [isLoading, setIsLoading] = useState(false)
   
   function addCard(e) {
     e.preventDefault()
     const newCard = {
       
         id: cards[cards.length - 1].id + 1,
-        date: "new Date()",
-        theme: "Wed Design",
+        date: `${new Date()}`,
+        theme: "Web Design",
         title: "Название новой задачи",
-        name: "Без статуса",
+        status: "Без статуса",
         themeStyle: "_orange",
       
     }
 
     setCards([...cards, newCard])
-console.log(cards)
+
   }
+
+useEffect(() => {
+  setIsLoading(true)
+  setTimeout(() => {
+    setIsLoading(false)
+  }, 1000)
+}, [])
 
   return (
     <>
@@ -37,7 +45,7 @@ console.log(cards)
         <PopBrowse />
         {/* pop-up end*/}
         <Header addCard={addCard}/>
-        <Main cards={cards} />
+        <Main cards={cards} isLoading={isLoading}/>
       </div>
     </>
   );
