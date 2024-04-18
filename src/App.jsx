@@ -10,6 +10,23 @@ import {tasks} from "./data.js";
 function App() {
 
   const [cards, setCards] = useState(tasks)
+  
+  function addCard(e) {
+    e.preventDefault()
+    const newCard = {
+      
+        id: cards[cards.length - 1].id + 1,
+        date: "new Date()",
+        theme: "Wed Design",
+        title: "Название новой задачи",
+        name: "Без статуса",
+        themeStyle: "_orange",
+      
+    }
+
+    setCards([...cards, newCard])
+console.log(cards)
+  }
 
   return (
     <>
@@ -19,7 +36,7 @@ function App() {
         <PopNewCard />
         <PopBrowse />
         {/* pop-up end*/}
-        <Header />
+        <Header addCard={addCard}/>
         <Main cards={cards} />
       </div>
     </>

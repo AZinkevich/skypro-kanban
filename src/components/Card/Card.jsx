@@ -1,10 +1,10 @@
-export const Card = ({ cardTheme, cardTitle, cardThemeStyle }) => {
+export const Card = ({ name, color }) => {
   return (
     <div className="cards__item">
       <div className="cards__card card">
         <div className="card__group">
-          <div className={`card__theme ${cardThemeStyle}`}>
-            <p className={cardThemeStyle}>{cardTheme}</p>
+          <div className={`card__theme ${color}`}>
+            <p className={'card__name'}>{name}</p>
           </div>
           <a href="#popBrowse" target="_self">
             <div className="card__btn">
@@ -16,7 +16,7 @@ export const Card = ({ cardTheme, cardTitle, cardThemeStyle }) => {
         </div>
         <div className="card__content">
           <a href="" target="_blank">
-            <h3 className="card__title">{cardTitle}</h3>
+            <h3 className="card__title">Название задачи</h3>
           </a>
           <div className="card__date">
             <svg

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Header = () => {
+export const Header = ({addCard}) => {
   const [isOpenUser, setIsOpenUser] = useState(false)
 
 const toggleOpenUser = (e) => {
@@ -23,7 +23,7 @@ const toggleOpenUser = (e) => {
         </div>
         <nav className="header__nav">
           <button className="header__btn-main-new _hover01" id="btnMainNew">
-            <a href="#popNewCard">Создать новую задачу</a>
+            <a href="#popNewCard" onClick={addCard}>Создать новую задачу</a>
           </button>
           <a href="#user-set-target" onClick={toggleOpenUser} className="header__user _hover02">
             Ivan Ivanov
