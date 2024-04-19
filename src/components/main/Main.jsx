@@ -10,7 +10,7 @@ export const Main = ({cards, isLoading}) => {
       <div className="container">
         <div className="main__block">
           <div className="main__content">
-           {isLoading ? "Загрузка..." : (
+           {isLoading ? "Данные загружаются..." : (
             <> 
             <Column
             status={"Без статуса"}
