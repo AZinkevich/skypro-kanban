@@ -6,6 +6,7 @@ import { PopNewCard } from "./components/popups/PopNewCard/PopNewCard.jsx";
 import { Main } from "./components/Main/Main.jsx";
 import { useEffect, useState } from "react";
 import {tasks} from "./data.js";
+import { format } from "date-fns";
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
     const newCard = {
       
         id: cards[cards.length - 1].id + 1,
-        date: `${new Date()}`,
+        date: `${format(new Date(), 'dd.MM.yy')}`,
         theme: "Web Design",
         title: "Название новой задачи",
         status: "Без статуса",

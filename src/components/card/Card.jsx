@@ -1,4 +1,4 @@
-export const Card = ({ status, date, title, theme }) => {
+export const Card = ({ date, title, theme }) => {
 
 const colours = {
   'Web Design': '_orange',
