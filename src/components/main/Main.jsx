@@ -1,5 +1,4 @@
 import { Column } from "../Column/Colunm.jsx";
-//import {tasks} from "../../data.js"
 
 
 export const Main = ({cards, isLoading}) => {
