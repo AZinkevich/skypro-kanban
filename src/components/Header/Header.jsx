@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "./Header.styled.js";
+import { Button, ButtonText, UserLink } from "./Header.Styled.js";
 
 export const Header = ({ addCard }) => {
   const [isOpenUser, setIsOpenUser] = useState(false);
@@ -25,15 +25,15 @@ export const Header = ({ addCard }) => {
           </div>
           <nav className="header__nav">
             <Button onClick={addCard} id="btnMainNew">
-              Создать новую задачу
+              <ButtonText>Создать новую задачу</ButtonText>
             </Button>
-            <a
+            <UserLink
               href="#user-set-target"
               onClick={toggleOpenUser}
-              className="header__user _hover02"
+              
             >
               Ivan Ivanov
-            </a>
+            </UserLink>
             {isOpenUser && (
               <div
                 className="header__pop-user-set pop-user-set"
