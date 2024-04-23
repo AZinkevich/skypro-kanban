@@ -1,18 +1,19 @@
 import { Card } from "../Card/Card.jsx";
 
-export const Column = ({ name, cards }) => {
+export const Column = ({ status, cards }) => {
   return (
     <div className="main__column column">
       <div className="column__title">
-        <p>{name}</p>
+        <p>{status}</p>
       </div>
       <div className="cards">
-        {cards.map((card, index) => (
+        {cards.map(card => (
           <Card
-            cardTheme={card.theme}
-            cardTitle={card.title}
-            cardThemeStyle={card.themeStyle}
-            key={index}
+            theme={card.theme}
+            status={card.status}
+            title={card.title}
+            date={card.date}
+            key={card.id}
           />
         ))}
       </div>
