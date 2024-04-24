@@ -1,14 +1,17 @@
+import { Container } from "../../common/Common.Styled.js";
 import { Column } from "../Column/Colunm.jsx";
+import * as S from "./Main.Styled.js"
+
 
 
 export const Main = ({cards, isLoading}) => {
   
 
   return (
-    <main className="main">
-      <div className="container">
-        <div className="main__block">
-          <div className="main__content">
+    <S.Main>
+      <Container>
+        <S.MainBlock>
+          <S.MainContent>
            {isLoading ? "Данные загружаются..." : (
             <> 
             <Column
@@ -33,10 +36,10 @@ export const Main = ({cards, isLoading}) => {
           />
           </>
            )}
-          </div>
-        </div>
-      </div>
-    </main>
+          </S.MainContent>
+        </S.MainBlock>
+      </Container>
+    </S.Main>
   );
 }
 

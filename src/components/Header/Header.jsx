@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Button, ButtonText, UserLink } from "./Header.Styled.js";
+import { Container } from "../../common/Common.Styled.js";
+import * as S from "./Header.Styled.js";
 
 export const Header = ({ addCard }) => {
   const [isOpenUser, setIsOpenUser] = useState(false);
@@ -10,9 +12,9 @@ export const Header = ({ addCard }) => {
   };
 
   return (
-    <header className="header">
-      <div className="container">
-        <div className="header__block">
+    <S.Header>
+      <Container>
+        <S.HeaderBlock>
           <div className="header__logo _show _light">
             <a href="" target="_self">
               <img src="../public/logo.png" alt="logo" />
@@ -52,8 +54,8 @@ export const Header = ({ addCard }) => {
               </div>
             )}
           </nav>
-        </div>
-      </div>
-    </header>
+        </S.HeaderBlock>
+      </Container>
+    </S.Header>
   );
 };
