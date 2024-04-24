@@ -1,12 +1,13 @@
 import { Card } from "../Card/Card.jsx";
+import { Cards, ColumnTitle, MainColumn } from "./Column.Styled.js";
 
 export const Column = ({ status, cards }) => {
   return (
-    <div className="main__column column">
-      <div className="column__title">
+    <MainColumn>
+      <ColumnTitle>
         <p>{status}</p>
-      </div>
-      <div className="cards">
+      </ColumnTitle>
+      <Cards>
         {cards.map(card => (
           <Card
             theme={card.theme}
@@ -16,7 +17,7 @@ export const Column = ({ status, cards }) => {
             key={card.id}
           />
         ))}
-      </div>
-    </div>
+      </Cards>
+    </MainColumn>
   );
 };
