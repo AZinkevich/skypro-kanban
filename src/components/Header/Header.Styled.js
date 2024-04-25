@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Hover01, Hover02 } from "../../common/Global.Styled";
 
 export const Header = styled.header`
   width: 100%;
@@ -18,7 +19,19 @@ export const HeaderBlock = styled.div`
   padding: 0 10px;
 `;
 
-export const Button = styled.button`
+export const HeaderLogoImg = styled.img`
+  width: 85px;
+`;
+
+export const HeaderNav = styled.div`
+  max-width: 290px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const HeaderButtonNew = styled(Hover01('button'))`
   width: 185px;
   height: 30px;
   border-radius: 4px;
@@ -30,12 +43,9 @@ export const Button = styled.button`
   font-weight: 500;
   margin-right: 20px;
 
-  &:hover {
-    background-color: #33399b;
-  }
 `;
 
-export const ButtonText = styled.a`
+export const HeaderButtonText = styled.a`
   color: #ffffff;
 
   &:hover {
@@ -43,7 +53,7 @@ export const ButtonText = styled.a`
   }
 `;
 
-export const UserLink = styled.a`
+export const HeaderUser = styled(Hover02('a'))`
   height: 20px;
   display: flex;
   flex-wrap: nowrap;
@@ -65,8 +75,8 @@ export const UserLink = styled.a`
     margin: -6px 0 0 5px;
     padding: 0;
   }
-
-  &:hover {
-    color: #33399b;
+  &:hover::after {
+    border-left-color: #33399b;
+    border-bottom-color: #33399b;
   }
 `;

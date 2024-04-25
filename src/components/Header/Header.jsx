@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Button, ButtonText, UserLink } from "./Header.Styled.js";
 import { Container } from "../../common/Common.Styled.js";
 import * as S from "./Header.Styled.js";
 
@@ -15,27 +14,27 @@ export const Header = ({ addCard }) => {
     <S.Header>
       <Container>
         <S.HeaderBlock>
-          <div className="header__logo _show _light">
+          <div>
             <a href="" target="_self">
-              <img src="../public/logo.png" alt="logo" />
+              <S.HeaderLogoImg src="../public/logo.png" alt="logo" />
             </a>
           </div>
-          <div className="header__logo _dark">
+          <div>
             <a href="" target="_self">
-              <img src="../public/logo_dark.png" alt="logo" />
+              <S.HeaderLogoImg src="../public/logo_dark.png" alt="logo" />
             </a>
           </div>
-          <nav className="header__nav">
-            <Button onClick={addCard} id="btnMainNew">
-              <ButtonText>Создать новую задачу</ButtonText>
-            </Button>
-            <UserLink
+          <S.HeaderNav>
+            <S.HeaderButtonNew onClick={addCard} id="btnMainNew">
+              <S.HeaderButtonText>Создать новую задачу</S.HeaderButtonText>
+            </S.HeaderButtonNew>
+            <S.HeaderUser
               href="#user-set-target"
               onClick={toggleOpenUser}
               
             >
               Ivan Ivanov
-            </UserLink>
+            </S.HeaderUser>
             {isOpenUser && (
               <div
                 className="header__pop-user-set pop-user-set"
@@ -53,7 +52,7 @@ export const Header = ({ addCard }) => {
                 </button>
               </div>
             )}
-          </nav>
+          </S.HeaderNav>
         </S.HeaderBlock>
       </Container>
     </S.Header>

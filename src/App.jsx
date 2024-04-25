@@ -5,49 +5,46 @@ import { PopExit } from "./components/Popups/PopExit/PopExit.jsx";
 import { PopNewCard } from "./components/Popups/PopNewCard/PopNewCard.jsx";
 import { Main } from "./components/Main/Main.jsx";
 import { useEffect, useState } from "react";
-import {tasks} from "./data.js";
+import { tasks } from "./data.js";
 import { format } from "date-fns";
+import { Wrapper } from "./common/Common.Styled.js";
 
 function App() {
+  const [cards, setCards] = useState(tasks);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [cards, setCards] = useState(tasks)
-  const [isLoading, setIsLoading] = useState(false)
-  
   function addCard(e) {
-    e.preventDefault()
+    e.preventDefault();
     const newCard = {
-      
-        id: cards[cards.length - 1].id + 1,
-        date: `${format(new Date(), 'dd.MM.yy')}`,
-        theme: "Web Design",
-        title: "Название новой задачи",
-        status: "Без статуса",
-        themeStyle: "_orange",
-      
-    }
+      id: cards[cards.length - 1].id + 1,
+      date: `${format(new Date(), "dd.MM.yy")}`,
+      theme: "Web Design",
+      title: "Название новой задачи",
+      status: "Без статуса",
+      themeStyle: "_orange",
+    };
 
-    setCards([...cards, newCard])
-
+    setCards([...cards, newCard]);
   }
 
-useEffect(() => {
-  setIsLoading(true)
-  setTimeout(() => {
-    setIsLoading(false)
-  }, 1000)
-}, [])
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
 
   return (
     <>
-      <div className="wrapper">
+      <Wrapper>
         {/* pop-up start*/}
         <PopExit />
         <PopNewCard />
         <PopBrowse />
         {/* pop-up end*/}
-        <Header addCard={addCard}/>
-        <Main cards={cards} isLoading={isLoading}/>
-      </div>
+        <Header addCard={addCard} />
+        <Main cards={cards} isLoading={isLoading} />
+      </Wrapper>
     </>
   );
 }
