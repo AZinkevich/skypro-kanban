@@ -44,7 +44,7 @@
   display: block;
 }
 
-._orange {
+/* ._orange {
   background-color: #FFE4C2;
   color: #FF6D00;
 }
@@ -62,7 +62,7 @@
 ._gray {
   background: #94A6BE;
   color: #FFFFFF;
-}
+} */
 
 ._active-category {
   opacity: 1 !important;
@@ -689,7 +689,7 @@
   z-index: 2;
 }
 
-.main {
+/* .main {
   width: 100%;
   background-color: #EAEEF6;
 }
@@ -718,9 +718,9 @@
   font-weight: 600;
   line-height: 1;
   text-transform: uppercase;
-}
+} */
 
-.cards {
+/* .cards {
   width: 100%;
   display: block;
   position: relative;
@@ -804,7 +804,7 @@
   line-height: 13px;
   color: #94A6BE;
   letter-spacing: 0.2px;
-}
+} */
 
 @media screen and (max-width: 1200px) {
   .main__block {

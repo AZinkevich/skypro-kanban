@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Container } from "../../common/Common.Styled.js";
 import * as S from "./Header.Styled.js";
 
-export const Header = ({ addCard }) => {
+export const Header = ({ addCard, setTheme, theme }) => {
   const [isOpenUser, setIsOpenUser] = useState(false);
 
   const toggleOpenUser = (e) => {
@@ -45,7 +45,7 @@ export const Header = ({ addCard }) => {
                 <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
                 <div className="pop-user-set__theme">
                   <p>Темная тема</p>
-                  <input type="checkbox" className="checkbox" name="checkbox" />
+                  <input onChange={() => setTheme(!theme)} type="checkbox" className="checkbox" name="checkbox" />
                 </div>
                 <button type="button" className="_hover03">
                   <a href="#popExit">Выйти</a>

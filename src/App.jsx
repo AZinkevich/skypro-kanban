@@ -8,10 +8,14 @@ import { useEffect, useState } from "react";
 import { tasks } from "./data.js";
 import { format } from "date-fns";
 import { Wrapper } from "./common/Common.Styled.js";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyled, darkTheme, lightTheme } from "./common/Global.Styled.js";
+
 
 function App() {
   const [cards, setCards] = useState(tasks);
   const [isLoading, setIsLoading] = useState(false);
+  const [themeColor, setThemeColor] = useState(true);
 
   function addCard(e) {
     e.preventDefault();
@@ -36,15 +40,18 @@ function App() {
 
   return (
     <>
+    <ThemeProvider theme={themeColor ? darkTheme : lightTheme}>
+    <GlobalStyled />
       <Wrapper>
         {/* pop-up start*/}
         <PopExit />
         <PopNewCard />
         <PopBrowse />
         {/* pop-up end*/}
-        <Header addCard={addCard} />
+        <Header addCard={addCard} setTheme={setThemeColor} theme={themeColor} />
         <Main cards={cards} isLoading={isLoading} />
       </Wrapper>
+      </ThemeProvider>
     </>
   );
 }
