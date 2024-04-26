@@ -15,14 +15,11 @@ export const Header = ({ addCard, setTheme, theme }) => {
       <Container>
         <S.HeaderBlock>
           <div>
-            <a href="" target="_self">
+            {!theme ? (<a href="" target="_self">
               <S.HeaderLogoImg src="../public/logo.png" alt="logo" />
-            </a>
-          </div>
-          <div>
-            <a href="" target="_self">
+            </a>) : (<a href="" target="_self">
               <S.HeaderLogoImg src="../public/logo_dark.png" alt="logo" />
-            </a>
+            </a>)}
           </div>
           <S.HeaderNav>
             <S.HeaderButtonNew onClick={addCard} id="btnMainNew">

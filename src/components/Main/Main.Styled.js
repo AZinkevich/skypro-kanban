@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Main = styled.main`
   width: 100%;
-  background-color: #eaeef6;
+  background-color: ${({theme}) => theme.mainBackground};
 `;
 
 export const MainBlock = styled.div`
