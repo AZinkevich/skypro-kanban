@@ -1,9 +1,16 @@
 import { styled } from "styled-components";
+import { device } from "../../lib/breakpoints";
 
 export const MainColumn = styled.div`
   width: 100%;
   margin: 0 auto;
   display: block;
+
+  @media ${device.xl} {
+    width: 100%;
+    margin: 0 auto;
+    display: block;;
+  }
 `;
 
 export const ColumnTitle = styled.div`
