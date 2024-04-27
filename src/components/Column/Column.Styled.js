@@ -9,7 +9,7 @@ export const MainColumn = styled.div`
   @media ${device.xl} {
     width: 100%;
     margin: 0 auto;
-    display: block;;
+    display: block;
   }
 `;
 
@@ -29,4 +29,10 @@ export const Cards = styled.div`
   width: 100%;
   display: block;
   position: relative;
+
+  @media ${device.xl} {
+    width: 100%;
+    display: flex;
+    overflow-y: auto;
+  }
 `;

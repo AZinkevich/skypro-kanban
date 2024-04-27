@@ -7,7 +7,7 @@ export const breakpoints = {
 
 export const device = {
   sm: `(max-width: ${breakpoints.sm})`,
-  mb: `(max-width: ${breakpoints.mb})`,
+  md: `(max-width: ${breakpoints.md})`,
   lg: `(max-width: ${breakpoints.lg})`,
   xl: `(max-width: ${breakpoints.xl})`,
 };
