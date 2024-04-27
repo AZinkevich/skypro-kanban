@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import { styled } from "styled-components";
 
+
 export   const lightTheme = {
   body: '#FFF',
   text: '#363537',
@@ -9,8 +10,8 @@ export   const lightTheme = {
   headerUserColor: '#565eef',
   backgroundColorCard: '#ffffff',
   colorCardTitle: '#000000',
-  backgroundColorOrange: '#ffe4c2',
-  colorOrange: '#ff6d00',
+  //backgroundColorOrange: '#ffe4c2',
+  // colorOrange: '#ff6d00',
   
   // Другие стили светлой темы
 };
@@ -23,8 +24,8 @@ export const darkTheme = {
   headerUserColor: '#ffffff',
   backgroundColorCard: '#20202C',
   colorCardTitle: '#ffffff',
-  backgroundColorOrange: '#FF6D00',
-  colorOrange: '#FFE4C2',
+  // backgroundColorOrange: '#FF6D00',
+  // colorOrange: '#FFE4C2',
 
   // Другие стили темной темы
 };
