@@ -40,7 +40,7 @@ function App() {
 
   return (
     <>
-    <ThemeProvider theme={themeColor ? darkTheme : lightTheme}>
+    <ThemeProvider theme={themeColor ? lightTheme : darkTheme}>
     <GlobalStyled />
       <Wrapper>
         {/* pop-up start*/}

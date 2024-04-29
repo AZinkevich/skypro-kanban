@@ -15,7 +15,7 @@ export const Header = ({ addCard, setTheme, theme }) => {
       <Container>
         <S.HeaderBlock>
           <div>
-            {!theme ? (<a href="" target="_self">
+            {theme ? (<a href="" target="_self">
               <S.HeaderLogoImg src="../public/logo.png" alt="logo" />
             </a>) : (<a href="" target="_self">
               <S.HeaderLogoImg src="../public/logo_dark.png" alt="logo" />
