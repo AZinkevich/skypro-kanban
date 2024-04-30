@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Container } from "../../common/Common.Styled.js";
-import * as S from "./Header.Styled.js";
+import { Container } from "../../common/Common.styled.js";
+import * as S from "./Header.styled.js";
 
 export const Header = ({ addCard, setTheme, theme }) => {
   const [isOpenUser, setIsOpenUser] = useState(false);

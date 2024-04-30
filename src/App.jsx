@@ -7,9 +7,9 @@ import { Main } from "./components/Main/Main.jsx";
 import { useEffect, useState } from "react";
 import { tasks } from "./data.js";
 import { format } from "date-fns";
-import { Wrapper } from "./common/Common.Styled.js";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyled, darkTheme, lightTheme } from "./common/Global.Styled.js";
+import { GlobalStyled, darkTheme, lightTheme } from "./common/Global.styled.js";
+import { Wrapper } from "./common/Common.styled.js";
 
 
 function App() {

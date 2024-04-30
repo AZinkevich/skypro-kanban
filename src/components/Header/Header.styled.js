@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Hover01, Hover02 } from "../../common/Global.Styled";
+import { Hover01, Hover02 } from "../../common/Global.styled";
 import { device } from "../../lib/breakpoints.js";
 
 export const Header = styled.header`

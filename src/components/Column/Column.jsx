@@ -1,5 +1,5 @@
 import { Card } from "../Card/Card.jsx";
-import { Cards, ColumnTitle, MainColumn } from "./Column.Styled.js";
+import { Cards, ColumnTitle, MainColumn } from "./Column.styled.js";
 
 export const Column = ({ status, cards }) => {
   return (

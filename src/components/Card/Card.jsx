@@ -1,14 +1,22 @@
-import {CardItem, CardsCard, CardGroup, CardTheme, CardContent, CardTitle, CardDate, CardBtn} from "./Card.Styled.js"
+import {
+  CardItem,
+  CardsCard,
+  CardGroup,
+  CardTheme,
+  CardContent,
+  CardTitle,
+  CardDate,
+  CardBtn,
+} from "./Card.styled.js";
 
 export const Card = ({ date, title, theme }) => {
-
   return (
-    <CardItem>  
+    <CardItem>
       <CardsCard>
         <CardGroup>
           <CardTheme $theme={theme}>
             <p>{theme}</p>
-            </CardTheme>
+          </CardTheme>
           <a href="#popBrowse" target="_self">
             <CardBtn>
               <div />
