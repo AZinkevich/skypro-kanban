@@ -41,4 +41,11 @@ export const tasks = [
     title: "Название задачи1",
     status: "Нужно сделать",
   },
+  {
+    id: 7,
+    date: "29.09.23",
+    theme: "Untitled",
+    title: "Без названия",
+    status: "Нужно сделать",
+  },
 ];
