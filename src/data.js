@@ -49,3 +49,13 @@ export const tasks = [
     status: "Нужно сделать",
   },
 ];
+
+export const paths = {
+  MAIN: "/",
+  EXIT: "/exit",
+  LOGIN: "/login",
+  REGISTER: "/register",
+  CARD: "/card",
+  NEWCARD: "/newcard",
+  NOT_FOUND: "*",
+}

@@ -1,19 +1,16 @@
-import "./App.css";
-import { Header } from "./components/Header/Header.jsx";
-import { PopBrowse } from "./components/Popups/PopBrowse/PopBrowse.jsx";
-import { PopExit } from "./components/Popups/PopExit/PopExit.jsx";
-import { PopNewCard } from "./components/Popups/PopNewCard/PopNewCard.jsx";
-import { Main } from "./components/Main/Main.jsx";
+import "../App.css";
+import { Header } from "../components/Header/Header.jsx";
+import { PopBrowse } from "../components/Popups/PopBrowse/PopBrowse.jsx";
+import { PopExit } from "../components/Popups/PopExit/PopExit.jsx";
+import { PopNewCard } from "../components/Popups/PopNewCard/PopNewCard.jsx";
+import { Main } from "../components/Main/Main.jsx";
 import { useEffect, useState } from "react";
-import { tasks } from "./data.js";
+import { tasks } from "../data.js";
 import { format } from "date-fns";
-import { Wrapper } from "./common/Common.styled.js";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyled, darkTheme, lightTheme } from "./common/Global.styled.js";
+import { Wrapper } from "../common/Common.styled.js";
 
-
-function App() {
-  const [cards, setCards] = useState(tasks);
+export const MainPage = () => {
+    const [cards, setCards] = useState(tasks);
   const [isLoading, setIsLoading] = useState(false);
   const [themeColor, setThemeColor] = useState(true);
 
@@ -40,8 +37,6 @@ function App() {
 
   return (
     <>
-    <ThemeProvider theme={themeColor ? lightTheme : darkTheme}>
-    <GlobalStyled />
       <Wrapper>
         {/* pop-up start*/}
         <PopExit />
@@ -51,9 +46,7 @@ function App() {
         <Header addCard={addCard} setTheme={setThemeColor} theme={themeColor} />
         <Main cards={cards} isLoading={isLoading} />
       </Wrapper>
-      </ThemeProvider>
     </>
   );
-}
 
-export default App;
+}
