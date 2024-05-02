@@ -15,6 +15,7 @@ export const Column = ({ status, cards }) => {
             title={card.title}
             date={card.date}
             key={card.id}
+            id={card.id}
           />
         ))}
       </Cards>

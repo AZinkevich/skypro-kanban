@@ -55,7 +55,7 @@ export const paths = {
   EXIT: "/exit",
   LOGIN: "/login",
   REGISTER: "/register",
-  CARD: "/card",
+  CARD: "/card/:id",
   NEWCARD: "/newcard",
   NOT_FOUND: "*",
 }

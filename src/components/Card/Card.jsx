@@ -8,8 +8,9 @@ import {
   CardDate,
   CardBtn,
 } from "./Card.styled.js";
+import { Link } from "react-router-dom";
 
-export const Card = ({ date, title, theme }) => {
+export const Card = ({ date, title, theme, id }) => {
   return (
     <CardItem>
       <CardsCard>
@@ -17,13 +18,13 @@ export const Card = ({ date, title, theme }) => {
           <CardTheme $theme={theme}>
             <p>{theme}</p>
           </CardTheme>
-          <a href="#popBrowse" target="_self">
+          <Link to={`card/${id}`}>
             <CardBtn>
               <div />
               <div />
               <div />
             </CardBtn>
-          </a>
+          </Link>
         </CardGroup>
         <CardContent>
           <a href="" target="_blank">

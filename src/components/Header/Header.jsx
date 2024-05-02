@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Container } from "../../common/Common.styled.js";
 import * as S from "./Header.styled.js";
+//import { Link } from "react-router-dom";
+//import { paths } from "../../data.js";
 
 export const Header = ({ addCard, setTheme, theme }) => {
   const [isOpenUser, setIsOpenUser] = useState(false);
@@ -15,21 +17,23 @@ export const Header = ({ addCard, setTheme, theme }) => {
       <Container>
         <S.HeaderBlock>
           <div>
-            {theme ? (<a href="" target="_self">
-              <S.HeaderLogoImg src="../public/logo.png" alt="logo" />
-            </a>) : (<a href="" target="_self">
-              <S.HeaderLogoImg src="../public/logo_dark.png" alt="logo" />
-            </a>)}
+            {theme ? (
+              <a href="" target="_self">
+                <S.HeaderLogoImg src="../public/logo.png" alt="logo" />
+              </a>
+            ) : (
+              <a href="" target="_self">
+                <S.HeaderLogoImg src="../public/logo_dark.png" alt="logo" />
+              </a>
+            )}
           </div>
           <S.HeaderNav>
             <S.HeaderButtonNew onClick={addCard} id="btnMainNew">
-              <S.HeaderButtonText>Создать новую задачу</S.HeaderButtonText>
-            </S.HeaderButtonNew>
-            <S.HeaderUser
-              href="#user-set-target"
-              onClick={toggleOpenUser}
               
-            >
+                <S.HeaderButtonText>Создать новую задачу</S.HeaderButtonText>
+              
+            </S.HeaderButtonNew>
+            <S.HeaderUser href="#user-set-target" onClick={toggleOpenUser}>
               Ivan Ivanov
             </S.HeaderUser>
             {isOpenUser && (
@@ -42,7 +46,12 @@ export const Header = ({ addCard, setTheme, theme }) => {
                 <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
                 <div className="pop-user-set__theme">
                   <p>Темная тема</p>
-                  <input onChange={() => setTheme(!theme)} type="checkbox" className="checkbox" name="checkbox" />
+                  <input
+                    onChange={() => setTheme(!theme)}
+                    type="checkbox"
+                    className="checkbox"
+                    name="checkbox"
+                  />
                 </div>
                 <button type="button" className="_hover03">
                   <a href="#popExit">Выйти</a>
