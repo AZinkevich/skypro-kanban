@@ -39,14 +39,11 @@ export const MainPage = ({themeColor, setThemeColor}) => {
   return (
     <>
       <Wrapper>
-        {/* pop-up start*/}
         <PopExit />
         <PopNewCard />
-        <Outlet />
-        {/* <PopBrowse /> */}
-        {/* pop-up end*/}
         <Header addCard={addCard} setTheme={setThemeColor} theme={themeColor} />
         <Main cards={cards} isLoading={isLoading} />
+        <Outlet />
       </Wrapper>
     </>
   );

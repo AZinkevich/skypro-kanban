@@ -1,5 +1,6 @@
+import { paths } from "../../../data.js";
 import { CalendarContent } from "../../Calendar/Calendar.jsx";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export const PopBrowse = () => {
 
@@ -118,7 +119,7 @@ export const PopBrowse = () => {
                 </button>
               </div>
               <button className="btn-browse__close _btn-bg _hover01">
-                <a href="#">Закрыть</a>
+                <Link to={paths.MAIN}>Закрыть</Link>
               </button>
             </div>
             <div className="pop-browse__btn-edit _hide">

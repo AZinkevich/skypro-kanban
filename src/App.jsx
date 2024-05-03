@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { ThemeProvider } from "styled-components";
 import { GlobalStyled, darkTheme, lightTheme } from "./common/Global.styled.js";
-import { AppRoutes } from "./Routes.jsx";
+import { AppRoutes } from "./AppRoutes.jsx";
 
 function App() {
   const [themeColor, setThemeColor] = useState(true);
