@@ -1,19 +1,19 @@
 import "./App.css";
 
-//import { useState } from "react";
+import { useState } from "react";
 
 import { ThemeProvider } from "styled-components";
 import { GlobalStyled, darkTheme, lightTheme } from "./common/Global.styled.js";
 import { AppRoutes } from "./Routes.jsx";
 
-function App({ themeColor, setThemeColor }) {
-  //const [themeColor, setThemeColor] = useState(true);
+function App() {
+  const [themeColor, setThemeColor] = useState(true);
 
   return (
     <>
-      <ThemeProvider theme={themeColor ? darkTheme : lightTheme}>
+      <ThemeProvider theme={themeColor ? lightTheme : darkTheme}>
         <GlobalStyled />
-        <AppRoutes setTheme={setThemeColor} theme={themeColor} />
+        <AppRoutes setThemeColor={setThemeColor} themeColor={themeColor} />
       </ThemeProvider>
     </>
   );

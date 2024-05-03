@@ -8,12 +8,12 @@ import { useEffect, useState } from "react";
 import { tasks } from "../data.js";
 import { format } from "date-fns";
 import { Wrapper } from "../common/Common.styled.js";
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 
-export const MainPage = () => {
-    const [cards, setCards] = useState(tasks);
+export const MainPage = ({themeColor, setThemeColor}) => {
+  const [cards, setCards] = useState(tasks);
   const [isLoading, setIsLoading] = useState(false);
-  const [themeColor, setThemeColor] = useState(true);
+  
 
   function addCard(e) {
     e.preventDefault();
@@ -50,5 +50,4 @@ export const MainPage = () => {
       </Wrapper>
     </>
   );
-
-}
+};

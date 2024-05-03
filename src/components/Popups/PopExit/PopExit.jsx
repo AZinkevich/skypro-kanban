@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import { paths } from "../../../data";
+
 export const PopExit = () => {
   return (
     <div className="pop-exit" id="popExit">
@@ -12,7 +15,7 @@ export const PopExit = () => {
                 <a href="modal/signin.html">Да, выйти</a>{" "}
               </button>
               <button className="pop-exit__exit-no _hover03" id="exitNo">
-                <a href="main.html">Нет, остаться</a>{" "}
+              <Link to={paths.MAIN}>Нет, остаться</Link>
               </button>
             </div>
           </form>
