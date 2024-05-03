@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Container } from "../../common/Common.styled.js";
 import * as S from "./Header.styled.js";
+import { paths } from "../../data.js";
+import { Link } from "react-router-dom";
 //import { Link } from "react-router-dom";
 //import { paths } from "../../data.js";
 
@@ -54,7 +56,7 @@ export const Header = ({ addCard, setTheme, theme }) => {
                   />
                 </div>
                 <button type="button" className="_hover03">
-                  <a href="#popExit">Выйти</a>
+                  <Link to={paths.EXIT}>Выйти</Link>
                 </button>
               </div>
             )}

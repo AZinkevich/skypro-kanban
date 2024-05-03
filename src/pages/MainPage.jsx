@@ -1,7 +1,7 @@
 import "../App.css";
 import { Header } from "../components/Header/Header.jsx";
 //import { PopBrowse } from "../components/Popups/PopBrowse/PopBrowse.jsx";
-import { PopExit } from "../components/Popups/PopExit/PopExit.jsx";
+//import { PopExit } from "../components/Popups/PopExit/PopExit.jsx";
 import { PopNewCard } from "../components/Popups/PopNewCard/PopNewCard.jsx";
 import { Main } from "../components/Main/Main.jsx";
 import { useEffect, useState } from "react";
@@ -39,7 +39,6 @@ export const MainPage = ({themeColor, setThemeColor}) => {
   return (
     <>
       <Wrapper>
-        <PopExit />
         <PopNewCard />
         <Header addCard={addCard} setTheme={setThemeColor} theme={themeColor} />
         <Main cards={cards} isLoading={isLoading} />
