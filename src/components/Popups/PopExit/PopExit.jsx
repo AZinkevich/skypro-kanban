@@ -11,15 +11,15 @@ export const PopExit = () => {
           <S.PopExitTtl>
             <h2>Выйти из аккаунта?</h2>
           </S.PopExitTtl>
-          <form className="pop-exit__form" id="formExit" action="#">
-            <div className="pop-exit__form-group">
-              <button className="pop-exit__exit-yes _hover01" id="exitYes">
+          <form id="formExit" action="#">
+            <S.PopExitGroup>
+              <S.PopExitYes id="exitYes">
                 <Link to={paths.LOGIN}>Да, выйти</Link>
-              </button>
-              <button className="pop-exit__exit-no _hover03" id="exitNo">
+              </S.PopExitYes>
+              <S.PopExitNo id="exitNo">
               <Link to={paths.MAIN}>Нет, остаться</Link>
-              </button>
-            </div>
+              </S.PopExitNo>
+            </S.PopExitGroup>
           </form>
         </S.PopExitBlock>
       </S.PopExitContainer>

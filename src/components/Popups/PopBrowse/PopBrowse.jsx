@@ -1,6 +1,7 @@
 import { paths } from "../../../data.js";
 import { CalendarContent } from "../../Calendar/Calendar.jsx";
 import { Link, useParams } from "react-router-dom";
+import * as S from "./PopBrowse.styled.js";
 
 export const PopBrowse = () => {
   const { id } = useParams();
@@ -114,9 +115,9 @@ export const PopBrowse = () => {
                   <a href="#">Удалить задачу</a>
                 </button>
               </div>
-              <button className="btn-browse__close _btn-bg _hover01">
+              <S.BtnBg>
                 <Link to={paths.MAIN}>Закрыть</Link>
-              </button>
+              </S.BtnBg>
             </div>
             <div className="pop-browse__btn-edit _hide">
               <div className="btn-group">

@@ -85,7 +85,7 @@ export const PopExitYes = styled(Hover01('button'))`
 `;
 
 export const PopExitNo = styled(Hover03('button'))`
-  width: 153px;
+  width: 180px;
   height: 30px;
   background-color: transparent;
   border-radius: 4px;

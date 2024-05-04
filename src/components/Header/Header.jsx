@@ -31,34 +31,27 @@ export const Header = ({ addCard, setTheme, theme }) => {
           </div>
           <S.HeaderNav>
             <S.HeaderButtonNew onClick={addCard} id="btnMainNew">
-              
-                <S.HeaderButtonText>Создать новую задачу</S.HeaderButtonText>
-              
+              <S.HeaderButtonText>Создать новую задачу</S.HeaderButtonText>
             </S.HeaderButtonNew>
             <S.HeaderUser href="#user-set-target" onClick={toggleOpenUser}>
               Ivan Ivanov
             </S.HeaderUser>
             {isOpenUser && (
-              <div
-                className="header__pop-user-set pop-user-set"
-                id="user-set-target"
-              >
-                {/* <a href="">x</a>  */}
-                <p className="pop-user-set__name">Ivan Ivanov</p>
-                <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-                <div className="pop-user-set__theme">
+              <S.HeaderPopSet id="user-set-target">
+                <S.PopUserName>Ivan Ivanov</S.PopUserName>
+                <S.PopUserMail>ivan.ivanov@gmail.com</S.PopUserMail>
+                <S.PopUserTheme>
                   <p>Темная тема</p>
                   <input
                     onChange={() => setTheme(!theme)}
                     type="checkbox"
-                    className="checkbox"
                     name="checkbox"
                   />
-                </div>
-                <button type="button" className="_hover03">
+                </S.PopUserTheme>
+                <S.ButtonUsetPop>
                   <Link to={paths.EXIT}>Выйти</Link>
-                </button>
-              </div>
+                </S.ButtonUsetPop>
+              </S.HeaderPopSet>
             )}
           </S.HeaderNav>
         </S.HeaderBlock>
