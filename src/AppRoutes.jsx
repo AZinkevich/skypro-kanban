@@ -2,16 +2,17 @@ import { Routes, Route } from "react-router-dom";
 import { paths } from "./data.js";
 import { MainPage } from "./pages/MainPage.jsx";
 import { CardPage } from "./pages/CardPage.jsx";
-import { ExitPage } from "./pages/Popups/PopExit/ExitPage.jsx";
-import { LoginPage } from "./pages/LoginPage/LoginPage.jsx";
+import { ExitPage } from "./pages/ExitPage.jsx";
+import { LoginPage } from "./pages/LoginPage.jsx";
 import { NewCardPage } from "./pages/NewCardPage.jsx";
-import { RegisterPage } from "./pages/RegisterPage/RegisterPage.jsx";
+import { RegisterPage } from "./pages/RegisterPage.jsx";
 import { NotFoundPage } from "./pages/NotFoundPage.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import { useState } from "react";
 
 export const AppRoutes = ({ themeColor, setThemeColor }) => {
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
+  console.log(isAuth);
   return (
     <Routes>
       <Route element={<PrivateRoute isAuth={isAuth} />}>

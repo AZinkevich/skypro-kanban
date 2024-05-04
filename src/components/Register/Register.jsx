@@ -1,53 +1,57 @@
 import { Link } from "react-router-dom";
-import { Wrapper } from "../../common/Common.styled";
 import { paths } from "../../data";
+import {
+  Wrapper,
+  ContainerSignup,
+  Modal,
+  ModalBlock,
+  ModalTtl,
+  ModalFormLogin,
+  ModalInput,
+  ModalBtnEnter,
+  ModalFormGroup,
+} from "./Register.styled";
 
-export const RegisterPage = () => {
+export const Register = () => {
   return (
     <Wrapper>
-      <div className="container-signup">
-        <div className="modal">
-          <div className="modal__block">
-            <div className="modal__ttl">
+      <ContainerSignup>
+        <Modal>
+          <ModalBlock>
+            <ModalTtl>
               <h2>Регистрация</h2>
-            </div>
-            <form className="modal__form-login" id="formLogUp" action="#">
-              <input
-                className="modal__input first-name"
+            </ModalTtl>
+            <ModalFormLogin id="formLogUp" action="#">
+              <ModalInput
                 type="text"
                 name="first-name"
                 id="first-name"
                 placeholder="Имя"
               />
-              <input
-                className="modal__input login"
+              <ModalInput
                 type="text"
                 name="login"
                 id="loginReg"
                 placeholder="Эл. почта"
               />
-              <input
-                className="modal__input password-first"
+              <ModalInput
                 type="password"
                 name="password"
                 id="passwordFirst"
                 placeholder="Пароль"
               />
-              <button
-                className="modal__btn-signup-ent _hover01"
-                id="SignUpEnter"
-              >
+              <ModalBtnEnter id="SignUpEnter">
                 <a href="../main.html">Зарегистрироваться</a>{" "}
-              </button>
-              <div className="modal__form-group">
+              </ModalBtnEnter>
+              <ModalFormGroup>
                 <p>
                   Уже есть аккаунт? <Link to={paths.LOGIN}>Войдите здесь</Link>
                 </p>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+              </ModalFormGroup>
+            </ModalFormLogin>
+          </ModalBlock>
+        </Modal>
+      </ContainerSignup>
     </Wrapper>
   );
 };

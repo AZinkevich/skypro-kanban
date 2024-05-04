@@ -1,13 +1,9 @@
 import { paths } from "../../../data.js";
 import { CalendarContent } from "../../Calendar/Calendar.jsx";
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams } from "react-router-dom";
 
 export const PopBrowse = () => {
-
   const { id } = useParams();
-  
-  console.log({id});
- 
 
   return (
     <div className="pop-browse" id="popBrowse">

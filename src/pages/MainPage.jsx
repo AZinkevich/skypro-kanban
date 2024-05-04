@@ -1,4 +1,4 @@
-import "../App.css";
+//import "../App.css";
 import { Header } from "../components/Header/Header.jsx";
 //import { PopBrowse } from "../components/Popups/PopBrowse/PopBrowse.jsx";
 //import { PopExit } from "../components/Popups/PopExit/PopExit.jsx";
@@ -10,10 +10,9 @@ import { format } from "date-fns";
 import { Wrapper } from "../common/Common.styled.js";
 import { Outlet } from "react-router-dom";
 
-export const MainPage = ({themeColor, setThemeColor}) => {
+export const MainPage = ({ themeColor, setThemeColor }) => {
   const [cards, setCards] = useState(tasks);
   const [isLoading, setIsLoading] = useState(false);
-  
 
   function addCard(e) {
     e.preventDefault();
@@ -33,7 +32,7 @@ export const MainPage = ({themeColor, setThemeColor}) => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 500);
   }, []);
 
   return (
