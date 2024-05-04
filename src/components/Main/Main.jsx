@@ -1,6 +1,6 @@
-import { Container } from "../../common/Common.Styled.js";
-import { Column } from "../Column/Colunm.jsx";
-import * as S from "./Main.Styled.js"
+import { Container } from "../../common/Common.styled.js";
+import { Column } from "../Column/Column.jsx";
+import * as S from "./Main.styled.js"
 
 
 

@@ -1,21 +1,30 @@
-import {CardItem, CardsCard, CardGroup, CardTheme, CardContent, CardTitle, CardDate, CardBtn} from "./Card.Styled.js"
+import {
+  CardItem,
+  CardsCard,
+  CardGroup,
+  CardTheme,
+  CardContent,
+  CardTitle,
+  CardDate,
+  CardBtn,
+} from "./Card.styled.js";
+import { Link } from "react-router-dom";
 
-export const Card = ({ date, title, theme }) => {
-
+export const Card = ({ date, title, theme, id }) => {
   return (
-    <CardItem>  
+    <CardItem>
       <CardsCard>
         <CardGroup>
           <CardTheme $theme={theme}>
             <p>{theme}</p>
-            </CardTheme>
-          <a href="#popBrowse" target="_self">
+          </CardTheme>
+          <Link to={`card/${id}`}>
             <CardBtn>
               <div />
               <div />
               <div />
             </CardBtn>
-          </a>
+          </Link>
         </CardGroup>
         <CardContent>
           <a href="" target="_blank">

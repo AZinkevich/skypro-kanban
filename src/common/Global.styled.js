@@ -77,7 +77,6 @@ body {
   background-color: ${({theme}) => theme.body};
   background:  ${(theme) => theme.background};
 }
-
 `;
 
 export const Hover01 = (elem) => styled[elem]`

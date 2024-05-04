@@ -1,5 +1,5 @@
 import { Card } from "../Card/Card.jsx";
-import { Cards, ColumnTitle, MainColumn } from "./Column.Styled.js";
+import { Cards, ColumnTitle, MainColumn } from "./Column.styled.js";
 
 export const Column = ({ status, cards }) => {
   return (
@@ -15,6 +15,7 @@ export const Column = ({ status, cards }) => {
             title={card.title}
             date={card.date}
             key={card.id}
+            id={card.id}
           />
         ))}
       </Cards>
