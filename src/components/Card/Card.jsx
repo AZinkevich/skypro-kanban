@@ -11,11 +11,6 @@ import {
 import { Link } from "react-router-dom";
 
 export const Card = ({ card }) => {
-// const colours = {
-//   'Web Design': 'orange',
-//   'Research': 'green',
-//   'Copywriting': 'purple',
-// }
 
   return (
     <CardItem>
