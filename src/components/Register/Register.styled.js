@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Hover01} from "../../common/Global.styled";
+import { Hover01 } from "../../common/Global.styled";
 //import { device } from "../../lib/breakpoints.js";
 
 export const Wrapper = styled.div`
@@ -91,7 +91,7 @@ export const ModalInput = styled.input`
   }
 `;
 
-export const ModalBtnEnter = styled(Hover01('button'))`
+export const ModalBtnEnter = styled(Hover01("button"))`
   width: 100%;
   height: 30px;
   background-color: #565eef;
@@ -131,4 +131,8 @@ export const ModalFormGroup = styled.div`
   & a {
     text-decoration: underline;
   }
+`;
+
+export const AlertMsg = styled.p`
+  color: red;
 `;
