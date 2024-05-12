@@ -4,14 +4,13 @@ import * as S from "./Main.styled.js"
 
 
 
-export const Main = ({cards, isLoading}) => {
+export const Main = ({cards, isLoading, errorMsg}) => {
   
-
   return (
     <S.Main>
       <Container>
         <S.MainBlock>
-          <S.MainContent>
+          {errorMsg ? <p>{errorMsg} </p>: ( <S.MainContent>
            {isLoading ? "Данные загружаются..." : (
             <> 
             <Column
@@ -36,7 +35,8 @@ export const Main = ({cards, isLoading}) => {
           />
           </>
            )}
-          </S.MainContent>
+          </S.MainContent>)}
+         
         </S.MainBlock>
       </Container>
     </S.Main>
