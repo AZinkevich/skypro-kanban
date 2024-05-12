@@ -23,7 +23,7 @@ export const register = ({ login, name, password }) => {
 };
 
 export const signIn = ({ login, password }) => {
-  return fetch(url, {
+  return fetch(url + '/login', {
     method: "POST",
     body: JSON.stringify({
       login: login,
@@ -31,7 +31,7 @@ export const signIn = ({ login, password }) => {
     }),
   }).then((res) => {
     if (res.status === 400) {
-      throw new Error("Пользователь с таким логином уже существует");
+      throw new Error("Неверный логин или пароль");
     }
     if (res.status === 500) {
       throw new Error("Ошибка сервера");

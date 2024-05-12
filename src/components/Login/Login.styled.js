@@ -134,3 +134,7 @@ export const ModalFormGroup = styled.div`
     text-decoration: underline;
   }
 `;
+
+export const AlertMsg = styled.p`
+  color: red;
+`;
