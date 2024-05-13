@@ -8,14 +8,10 @@ export const Column = ({ status, cards }) => {
         <p>{status}</p>
       </ColumnTitle>
       <Cards>
-        {cards.map(card => (
+        {cards.map(el => (
           <Card
-            theme={card.theme}
-            status={card.status}
-            title={card.title}
-            date={card.date}
-            key={card.id}
-            id={card.id}
+            key={el._id}
+            card={el}
           />
         ))}
       </Cards>

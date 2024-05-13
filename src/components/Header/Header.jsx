@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 //import { Link } from "react-router-dom";
 //import { paths } from "../../data.js";
 
-export const Header = ({ addCard, setTheme, theme }) => {
+export const Header = ({isAuth, addCard, setTheme, theme }) => {
   const [isOpenUser, setIsOpenUser] = useState(false);
 
   const toggleOpenUser = (e) => {
@@ -34,12 +34,12 @@ export const Header = ({ addCard, setTheme, theme }) => {
               <S.HeaderButtonText>Создать новую задачу</S.HeaderButtonText>
             </S.HeaderButtonNew>
             <S.HeaderUser href="#user-set-target" onClick={toggleOpenUser}>
-              Ivan Ivanov
+            {isAuth.name}
             </S.HeaderUser>
             {isOpenUser && (
               <S.HeaderPopSet id="user-set-target">
-                <S.PopUserName>Ivan Ivanov</S.PopUserName>
-                <S.PopUserMail>ivan.ivanov@gmail.com</S.PopUserMail>
+                <S.PopUserName>{isAuth.name}</S.PopUserName>
+                <S.PopUserMail>{isAuth.login}</S.PopUserMail>
                 <S.PopUserTheme>
                   <p>Темная тема</p>
                   <input

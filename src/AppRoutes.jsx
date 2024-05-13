@@ -10,8 +10,18 @@ import { NotFoundPage } from "./pages/NotFoundPage.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import { useState } from "react";
 
+function getLocalStorage() {
+  let user = '';
+  try {
+    user = JSON.parse(localStorage.getItem("user"));
+    return user;
+  } catch (err) {
+    ("");
+  }
+}
+
 export const AppRoutes = ({ themeColor, setThemeColor }) => {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(getLocalStorage());
   console.log(isAuth);
   return (
     <Routes>
@@ -19,10 +29,10 @@ export const AppRoutes = ({ themeColor, setThemeColor }) => {
         <Route
           path={paths.MAIN}
           element={
-            <MainPage setThemeColor={setThemeColor} themeColor={themeColor} />
+            <MainPage isAuth={isAuth} setThemeColor={setThemeColor} themeColor={themeColor} />
           }
         />
-        <Route path={paths.EXIT} element={<ExitPage />} />
+        <Route path={paths.EXIT} element={<ExitPage setIsAuth={setIsAuth} />} />
         <Route path={paths.CARD} element={<CardPage />} />
         <Route path={paths.NEWCARD} element={<NewCardPage />} />
       </Route>

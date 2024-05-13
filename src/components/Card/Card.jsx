@@ -10,15 +10,16 @@ import {
 } from "./Card.styled.js";
 import { Link } from "react-router-dom";
 
-export const Card = ({ date, title, theme, id }) => {
+export const Card = ({ card }) => {
+
   return (
     <CardItem>
       <CardsCard>
         <CardGroup>
-          <CardTheme $theme={theme}>
-            <p>{theme}</p>
+          <CardTheme $theme={card.topic}>
+            <p>{card.topic}</p>
           </CardTheme>
-          <Link to={`card/${id}`}>
+          <Link to={`card/${card._id}`}>
             <CardBtn>
               <div />
               <div />
@@ -28,7 +29,7 @@ export const Card = ({ date, title, theme, id }) => {
         </CardGroup>
         <CardContent>
           <a href="" target="_blank">
-            <CardTitle>{title}</CardTitle>
+            <CardTitle>{card.title}</CardTitle>
           </a>
           <CardDate>
             <svg
@@ -59,7 +60,7 @@ export const Card = ({ date, title, theme, id }) => {
                 </clipPath>
               </defs>
             </svg>
-            <p>{date}</p>
+            <p>{card.date}</p>
           </CardDate>
         </CardContent>
       </CardsCard>

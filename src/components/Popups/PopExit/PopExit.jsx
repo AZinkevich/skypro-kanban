@@ -1,9 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { paths } from "../../../data";
-import * as S from "./PopExit.styled.js"
+import * as S from "./PopExit.styled.js";
 
+export const PopExit = ({ setIsAuth }) => {
+  const navigate = useNavigate();
+  const logOut = () => {
+    setIsAuth("");
+    localStorage.setItem("user", "");
+    navigate(paths.LOGIN);
+  };
 
-export const PopExit = () => {
   return (
     <S.PopExit>
       <S.PopExitContainer>
@@ -14,10 +20,10 @@ export const PopExit = () => {
           <form id="formExit" action="#">
             <S.PopExitGroup>
               <S.PopExitYes id="exitYes">
-                <Link to={paths.LOGIN}>Да, выйти</Link>
+                <Link onClick={logOut}>Да, выйти</Link>
               </S.PopExitYes>
               <S.PopExitNo id="exitNo">
-              <Link to={paths.MAIN}>Нет, остаться</Link>
+                <Link to={paths.MAIN}>Нет, остаться</Link>
               </S.PopExitNo>
             </S.PopExitGroup>
           </form>
@@ -25,4 +31,4 @@ export const PopExit = () => {
       </S.PopExitContainer>
     </S.PopExit>
   );
-}
+};
