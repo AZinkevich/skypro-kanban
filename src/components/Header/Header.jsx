@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Container } from "../../common/Common.styled.js";
 import * as S from "./Header.styled.js";
 import { paths } from "../../data.js";
 import { Link } from "react-router-dom";
-//import { Link } from "react-router-dom";
-//import { paths } from "../../data.js";
+import { UserContext } from "../../contexts/user.jsx";
 
-export const Header = ({isAuth, addCard, setTheme, theme }) => {
+export const Header = ({ addCard, setTheme, theme }) => {
   const [isOpenUser, setIsOpenUser] = useState(false);
+  const { user } = useContext(UserContext);
 
   const toggleOpenUser = (e) => {
     e.preventDefault();
@@ -34,12 +34,12 @@ export const Header = ({isAuth, addCard, setTheme, theme }) => {
               <S.HeaderButtonText>Создать новую задачу</S.HeaderButtonText>
             </S.HeaderButtonNew>
             <S.HeaderUser href="#user-set-target" onClick={toggleOpenUser}>
-            {isAuth.name}
+              {user.name}
             </S.HeaderUser>
             {isOpenUser && (
               <S.HeaderPopSet id="user-set-target">
-                <S.PopUserName>{isAuth.name}</S.PopUserName>
-                <S.PopUserMail>{isAuth.login}</S.PopUserMail>
+                <S.PopUserName>{user.name}</S.PopUserName>
+                <S.PopUserMail>{user.login}</S.PopUserMail>
                 <S.PopUserTheme>
                   <p>Темная тема</p>
                   <input
