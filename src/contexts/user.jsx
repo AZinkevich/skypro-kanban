@@ -14,7 +14,7 @@ function getUserLocalStorage() {
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(getUserLocalStorage());
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   const loginContext = (res) => {
     setUser(res.user);

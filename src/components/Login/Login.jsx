@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-//import { Wrapper } from "../../common/Common.styled.js";
 import { paths } from "../../data.js";
 import {
   Wrapper,
