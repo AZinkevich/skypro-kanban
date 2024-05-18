@@ -14,7 +14,7 @@ import {
 } from "./Login.styled.js";
 import { useContext, useState } from "react";
 import { signIn } from "../../api/auth.js";
-import { UserContext } from "../../contexts/user.jsx";
+import { UserContext } from "../../contexts/userContext.jsx";
 
 export const Login = () => {
   const { loginContext } = useContext(UserContext);

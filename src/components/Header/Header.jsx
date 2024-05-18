@@ -2,16 +2,21 @@ import { useContext, useState } from "react";
 import { Container } from "../../common/Common.styled.js";
 import * as S from "./Header.styled.js";
 import { paths } from "../../data.js";
-import { Link } from "react-router-dom";
-import { UserContext } from "../../contexts/user.jsx";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../../contexts/userContext.jsx";
 
-export const Header = ({ addCard, setTheme, theme }) => {
+export const Header = ({ setTheme, theme }) => {
+  const navigate = useNavigate();
   const [isOpenUser, setIsOpenUser] = useState(false);
   const { user } = useContext(UserContext);
 
   const toggleOpenUser = (e) => {
     e.preventDefault();
     setIsOpenUser((prev) => !prev);
+  };
+
+  const addCard = () => {
+    navigate(paths.NEWCARD);
   };
 
   return (

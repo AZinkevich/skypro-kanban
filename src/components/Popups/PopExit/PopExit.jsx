@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { paths } from "../../../data";
 import * as S from "./PopExit.styled.js";
 import { useContext } from "react";
-import { UserContext } from "../../../contexts/user.jsx";
+import { UserContext } from "../../../contexts/userContext.jsx";
 
 export const PopExit = () => {
   const { logoutContext } = useContext(UserContext);
