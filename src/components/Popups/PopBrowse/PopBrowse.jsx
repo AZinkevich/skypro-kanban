@@ -1,5 +1,5 @@
 import { paths } from "../../../data.js";
-import { CalendarContent } from "../../Calendar/Calendar.jsx";
+//import { CalendarContent } from "../../Calendar/Calendar.jsx";
 import { Link, useParams } from "react-router-dom";
 import * as S from "./PopBrowse.styled.js";
 //import { useState } from "react";
@@ -62,7 +62,7 @@ export const PopBrowse = () => {
               <div className="pop-new-card__calendar calendar">
                 <p className="calendar__ttl subttl">Даты</p>
                 <div className="calendar__block">
-                  <CalendarContent />
+                  {/* <CalendarContent /> */}
                   <input
                     type="hidden"
                     id="datepick_value"

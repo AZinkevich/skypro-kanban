@@ -5,19 +5,25 @@ import { addNewCardApi } from "../../../api/cardsApi.js";
 import { UserContext } from "../../../contexts/userContext.jsx";
 import { CardContext } from "../../../contexts/cardContext.jsx";
 import { AlertMsg } from "../../Register/Register.styled.js";
+import "react-day-picker/dist/style.css";
+import * as S from "./PopNewCard.styled.js";
+import { Calendar } from "../../Calendar/Calendar.jsx";
 
 export const PopNewCard = () => {
   const { user } = useContext(UserContext);
   const { setCards } = useContext(CardContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const [selected, setSelected] = useState();
+  //const [date, setDate] = useState(new Date());
   const [inputValue, setInputValue] = useState({
     title: "",
     topic: "",
     status: "",
     description: "",
-    date: new Date(),
   });
+
+  //const currentData = date.toLocaleDateString("ru-RU");
 
   const onAddNewCard = () => {
     setError("");
@@ -25,15 +31,15 @@ export const PopNewCard = () => {
     const topic = !inputValue.topic ? "Research" : inputValue.topic;
     const status = !inputValue.status ? "Без статуса" : inputValue.status;
     const newCard = {
-      ...inputValue,
+      description: inputValue.description,
       title,
       topic,
       status,
+      // date,
     };
 
-    if (newCard.description === "") {
-      setError("Заполни поле описания");
-      return;
+    if (!inputValue.description) {
+      return setError("Заполните поле описания");
     }
 
     addNewCardApi({ newCard, token: user.token })
@@ -52,49 +58,56 @@ export const PopNewCard = () => {
   };
 
   return (
-    <div className="pop-new-card" id="popNewCard">
-      <div className="pop-new-card__container">
-        <div className="pop-new-card__block">
-          <div className="pop-new-card__content">
-            <h3 className="pop-new-card__ttl">Создание задачи</h3>
+    <S.PopNewCard>
+      <S.PopNewCardContainer>
+        <S.PopNewCardBlock>
+          <S.PopNewCardContent>
+            <S.PopNewCardTtl>Создание задачи</S.PopNewCardTtl>
             <Link to={paths.MAIN} className="pop-new-card__close">
               ✖
             </Link>
-            <div className="pop-new-card__wrap">
-              <form
-                className="pop-new-card__form form-new"
+            <S.PopNewCardWrap>
+              <S.PopNewCardForm
                 id="formNewCard"
                 action="#"
               >
-                <div className="form-new__block">
-                  <label htmlFor="formTitle" className="subttl">
+                <S.FormNewBlock>
+                  <S.Subttl htmlFor="formTitle">
                     Название задачи
-                  </label>
-                  <input
+                  </S.Subttl>
+                  <S.FormNewInput
                     onChange={onChangeInput}
-                    className="form-new__input"
                     type="text"
                     name="title"
                     id="formTitle"
                     placeholder="Введите название задачи..."
                     autoFocus=""
                   />
-                </div>
-                <div className="form-new__block">
-                  <label htmlFor="textArea" className="subttl">
+                </S.FormNewBlock>
+                <S.FormNewBlock>
+                  <S.Subttl htmlFor="textArea">
                     Описание задачи
-                  </label>
-                  <textarea
+                  </S.Subttl>
+                  <S.PopNewCardArea
                     onChange={onChangeInput}
-                    className="form-new__area"
                     name="description"
                     id="textArea"
                     placeholder="Введите описание задачи..."
                     defaultValue={inputValue.description}
                   />
-                </div>
-              </form>
-              <div className="pop-new-card__calendar calendar">
+                </S.FormNewBlock>
+              </S.PopNewCardForm>
+              <div>
+              <S.Calendar__ttl>Даты</S.Calendar__ttl>
+              <Calendar selected={selected} setSelected={setSelected} />
+                {/* <Calendar mode="single" onSelect={setDate} selected={date} locale={ru}/> */}
+                {/* <div className="calendar__period">
+                  <p className="calendar__p date-end">
+                    Выберите срок исполнения <span className="date-control" />{currentData}
+                  </p>
+                </div> */}
+              </div>
+              {/* <div className="pop-new-card__calendar calendar">
                 <p className="calendar__ttl subttl">Даты</p>
                 <div className="calendar__block">
                   <div className="calendar__nav">
@@ -184,23 +197,13 @@ export const PopNewCard = () => {
                       </div>
                     </div>
                   </div>
-                  <input
-                    type="hidden"
-                    id="datepick_value"
-                    defaultValue="08.09.2023"
-                  />
-                  <div className="calendar__period">
-                    <p className="calendar__p date-end">
-                      Выберите срок исполнения <span className="date-control" />
-                      .
-                    </p>
-                  </div>
+                  
                 </div>
-              </div>
-            </div>
-            <div className="pop-new-card__categories categories">
-              <p className="categories__p subttl">Категория</p>
-              <div className="categories__themes">
+              </div> */}
+            </S.PopNewCardWrap>
+            <S.Categories>
+              <S.Subttl>Категория</S.Subttl>
+              <S.CategoriesThemes>
                 <div className="categories__theme _orange _active-category">
                   <p className="_orange">Web Design</p>
                 </div>
@@ -210,8 +213,8 @@ export const PopNewCard = () => {
                 <div className="categories__theme _purple">
                   <p className="_purple">Copywriting</p>
                 </div>
-              </div>
-            </div>
+              </S.CategoriesThemes>
+            </S.Categories>
             <AlertMsg>{error && error}</AlertMsg>
             <button
               onClick={onAddNewCard}
@@ -220,9 +223,9 @@ export const PopNewCard = () => {
             >
               Создать задачу
             </button>
-          </div>
-        </div>
-      </div>
-    </div>
+          </S.PopNewCardContent>
+        </S.PopNewCardBlock>
+      </S.PopNewCardContainer>
+    </S.PopNewCard>
   );
 };

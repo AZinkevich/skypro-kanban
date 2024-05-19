@@ -1,17 +1,18 @@
 import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
-import { DayPicker } from 'react-day-picker';
-import 'react-day-picker/dist/style.css';
 
-export const CalendarContent = ({selected, setSelected}) => {
+import 'react-day-picker/dist/style.css';
+import { CalendarContent } from './Calendar.styled.js';
+
+export const Calendar = ({selected, setSelected}) => {
   
 
   let footer = <p>Выберите срок исполнения</p>;
   if (selected) {
-    footer = <p>Вы выбрали {format(selected, 'PP', {locale: ru})}.</p>;
+    footer = <p>Вы выбрали {format(selected, 'PP', {locale: ru})}</p>;
   }
   return (
-    <DayPicker
+    <CalendarContent
       mode="single"
       locale={ru}
       selected={selected}
