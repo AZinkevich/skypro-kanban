@@ -67,14 +67,9 @@ export const PopNewCard = () => {
               ✖
             </Link>
             <S.PopNewCardWrap>
-              <S.PopNewCardForm
-                id="formNewCard"
-                action="#"
-              >
+              <S.PopNewCardForm id="formNewCard" action="#">
                 <S.FormNewBlock>
-                  <S.Subttl htmlFor="formTitle">
-                    Название задачи
-                  </S.Subttl>
+                  <S.Subttl htmlFor="formTitle">Название задачи</S.Subttl>
                   <S.FormNewInput
                     onChange={onChangeInput}
                     type="text"
@@ -85,9 +80,7 @@ export const PopNewCard = () => {
                   />
                 </S.FormNewBlock>
                 <S.FormNewBlock>
-                  <S.Subttl htmlFor="textArea">
-                    Описание задачи
-                  </S.Subttl>
+                  <S.Subttl htmlFor="textArea">Описание задачи</S.Subttl>
                   <S.PopNewCardArea
                     onChange={onChangeInput}
                     name="description"
@@ -98,8 +91,8 @@ export const PopNewCard = () => {
                 </S.FormNewBlock>
               </S.PopNewCardForm>
               <div>
-              <S.Calendar__ttl>Даты</S.Calendar__ttl>
-              <Calendar selected={selected} setSelected={setSelected} />
+                <S.Calendar__ttl>Даты</S.Calendar__ttl>
+                <Calendar selected={selected} setSelected={setSelected} />
                 {/* <Calendar mode="single" onSelect={setDate} selected={date} locale={ru}/> */}
                 {/* <div className="calendar__period">
                   <p className="calendar__p date-end">
@@ -204,25 +197,48 @@ export const PopNewCard = () => {
             <S.Categories>
               <S.Subttl>Категория</S.Subttl>
               <S.CategoriesThemes>
-                <div className="categories__theme _orange _active-category">
-                  <p className="_orange">Web Design</p>
+                <div>
+                  <S.Label1
+                    type="radio"
+                    id="radio1"
+                    name="topic"
+                    value="Web Design"
+                    onChange={onChangeInput}
+                  />
+                  <S.PopNewCardLabel1 for="radio1">
+                    <p>Web Design</p>
+                  </S.PopNewCardLabel1>
                 </div>
-                <div className="categories__theme _green">
-                  <p className="_green">Research</p>
+                <div>
+                  <S.Label2
+                    type="radio"
+                    id="radio2"
+                    name="topic"
+                    value="Research"
+                    onChange={onChangeInput}
+                  />
+                  <S.PopNewCardLabel2 for="radio2">
+                    <p>Research</p>
+                  </S.PopNewCardLabel2>
                 </div>
-                <div className="categories__theme _purple">
-                  <p className="_purple">Copywriting</p>
+                <div>
+                  <S.Label3
+                    type="radio"
+                    id="radio3"
+                    name="topic"
+                    value="Copywriting"
+                    onChange={onChangeInput}
+                  />
+                  <S.PopNewCardLabel3 for="radio3">
+                    <p>Copywriting</p>
+                  </S.PopNewCardLabel3>
                 </div>
               </S.CategoriesThemes>
             </S.Categories>
             <AlertMsg>{error && error}</AlertMsg>
-            <button
-              onClick={onAddNewCard}
-              className="form-new__create _hover01"
-              id="btnCreate"
-            >
+            <S.FormNewCreate onClick={onAddNewCard} id="btnCreate">
               Создать задачу
-            </button>
+            </S.FormNewCreate>
           </S.PopNewCardContent>
         </S.PopNewCardBlock>
       </S.PopNewCardContainer>

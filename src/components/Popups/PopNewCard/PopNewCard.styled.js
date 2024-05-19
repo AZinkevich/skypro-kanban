@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Hover01 } from "../../../common/Global.styled";
 
 export const Calendar__ttl = styled.p`
   margin-left: 16px;
@@ -74,7 +75,7 @@ export const PopNewCardTtl = styled.h3`
 export const PopNewCardWrap = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 30px;
+  gap: 10px;
 `;
 
 export const PopNewCardForm = styled.form`
@@ -170,4 +171,107 @@ export const CategoriesThemes = styled.div`
   flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: flex-start;
+`;
+
+export const FormNewCreate = styled(Hover01("button"))`
+  width: 138px;
+  height: 30px;
+  background-color: #565eef;
+  border-radius: 4px;
+  border: 0;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: #ffffff;
+  float: right;
+`;
+
+export const PopNewCardLabel1 = styled.label`
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+  background-color: ${({ $theme }) =>
+    $theme === "dark" ? "#ff6d00" : "#FFE4C2"};
+  color: ${({ $theme }) => ($theme === "dark" ? "#fff" : "#FF6D00")};
+  &:hover {
+    opacity: 1 !important;
+  }
+  & p {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    white-space: nowrap;
+  }
+`;
+
+export const Label1 = styled.input`
+  display: none;
+  &:checked + label {
+    opacity: 1 !important;
+  }
+`;
+
+export const PopNewCardLabel2 = styled.label`
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+  background-color: ${({ $theme }) =>
+    $theme === "dark" ? "#06b16e" : "#B4FDD1"};
+  color: ${({ $theme }) => ($theme === "dark" ? "#fff" : "#06B16E")};
+
+  &:hover {
+    opacity: 1 !important;
+  }
+  & p {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    white-space: nowrap;
+  }
+`;
+
+export const Label2 = styled.input`
+  display: none;
+  &:checked + label {
+    opacity: 1 !important;
+  }
+`;
+
+export const PopNewCardLabel3 = styled.label`
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+  background-color: ${({ $theme }) =>
+    $theme === "dark" ? "#9a48f1" : "#E9D4FF"};
+  color: ${({ $theme }) => ($theme === "dark" ? "#fff" : "#9A48F1")};
+
+  &:hover {
+    opacity: 1 !important;
+  }
+  & p {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    white-space: nowrap;
+  }
+`;
+
+export const Label3 = styled.input`
+  display: none;
+  &:checked + label {
+    opacity: 1 !important;
+  }
 `;
