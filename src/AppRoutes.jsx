@@ -18,10 +18,11 @@ export const AppRoutes = ({ themeColor, setThemeColor }) => {
           element={
             <MainPage setThemeColor={setThemeColor} themeColor={themeColor} />
           }
-        />
-        <Route path={paths.EXIT} element={<ExitPage />} />
-        <Route path={paths.CARD} element={<CardPage />} />
-        <Route path={paths.NEWCARD} element={<NewCardPage />} />
+        >
+          <Route path={paths.EXIT} element={<ExitPage />} />
+          <Route path={paths.CARD} element={<CardPage />} />
+          <Route path={paths.NEWCARD} element={<NewCardPage />} />
+        </Route>
       </Route>
 
       <Route path={paths.LOGIN} element={<LoginPage />} />

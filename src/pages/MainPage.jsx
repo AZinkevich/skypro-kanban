@@ -12,8 +12,8 @@ export const MainPage = ({ themeColor, setThemeColor }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const { user } = useContext(UserContext);
-  const {cards, setCards} = useContext(CardContext)
-  
+  const { cards, setCards } = useContext(CardContext);
+
   function addCard(e) {
     e.preventDefault();
     const newCard = {
@@ -43,15 +43,15 @@ export const MainPage = ({ themeColor, setThemeColor }) => {
       .finally(() => {
         setIsLoading(false);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <Wrapper>
+        <Outlet />
         <Header addCard={addCard} setTheme={setThemeColor} theme={themeColor} />
         <Main errorMsg={errorMsg} cards={cards} isLoading={isLoading} />
-        <Outlet />
       </Wrapper>
     </>
   );
