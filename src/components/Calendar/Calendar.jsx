@@ -9,7 +9,7 @@ export const Calendar = ({selected, setSelected}) => {
 
   let footer = <p>Выберите срок исполнения</p>;
   if (selected) {
-    footer = <p>Вы выбрали {format(selected, 'PP', {locale: ru})}</p>;
+    footer = <p>Срок исполнения {format(selected, 'PP', {locale: ru})}</p>;
   }
   return (
     <CalendarContent

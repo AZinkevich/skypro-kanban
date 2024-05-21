@@ -2,10 +2,18 @@ import { paths } from "../../../data.js";
 //import { CalendarContent } from "../../Calendar/Calendar.jsx";
 import { Link, useParams } from "react-router-dom";
 import * as S from "./PopBrowse.styled.js";
+import { useContext, useState } from "react";
+import { UserContext } from "../../../contexts/userContext.jsx";
+import { CardContext } from "../../../contexts/cardContext.jsx";
+import { Calendar } from "../../Calendar/Calendar.jsx";
 //import { useState } from "react";
 
 export const PopBrowse = () => {
   const { id } = useParams();
+  const { user } = useContext(UserContext);
+  const { cards } = useContext(CardContext);
+  const [selected, setSelected] = useState();
+  const currentCard = cards.find((el) => id === el._id);
   //const [selected, setSelected] = useState();
 
   return (
@@ -14,9 +22,9 @@ export const PopBrowse = () => {
         <div className="pop-browse__block">
           <div className="pop-browse__content">
             <div className="pop-browse__top-block">
-              <h3 className="pop-browse__ttl">Название задачи {id}</h3>
+              <h3 className="pop-browse__ttl">Название задачи {currentCard.title}</h3>
               <div className="categories__theme theme-top _orange _active-category">
-                <p className="_orange">Web Design</p>
+                <p className="_orange">{currentCard.topic}</p>
               </div>
             </div>
             <div className="pop-browse__status status">
@@ -26,7 +34,7 @@ export const PopBrowse = () => {
                   <p>Без статуса</p>
                 </div>
                 <div className="status__theme _gray">
-                  <p className="_gray">Нужно сделать</p>
+                  <p className="_gray">{currentCard.status}</p>
                 </div>
                 <div className="status__theme _hide">
                   <p>В работе</p>
@@ -55,15 +63,15 @@ export const PopBrowse = () => {
                     id="textArea01"
                     readOnly=""
                     placeholder="Введите описание задачи..."
-                    defaultValue={""}
+                    value={currentCard.description}
                   />
                 </div>
               </form>
               <div className="pop-new-card__calendar calendar">
                 <p className="calendar__ttl subttl">Даты</p>
                 <div className="calendar__block">
-                  {/* <CalendarContent /> */}
-                  <input
+                <Calendar selected={currentCard.date} />
+                  {/* <input
                     type="hidden"
                     id="datepick_value"
                     defaultValue="08.09.2023"
@@ -73,7 +81,7 @@ export const PopBrowse = () => {
                       Срок исполнения:{" "}
                       <span className="date-control">09.09.23</span>
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
