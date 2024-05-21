@@ -1,5 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
-//import { Wrapper } from "../../common/Common.styled.js";
+import { Link } from "react-router-dom";
 import { paths } from "../../data.js";
 import {
   Wrapper,
@@ -13,11 +12,12 @@ import {
   ModalFormGroup,
   AlertMsg,
 } from "./Login.styled.js";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { signIn } from "../../api/auth.js";
+import { UserContext } from "../../contexts/userContext.jsx";
 
-export const Login = ({ setIsAuth }) => {
-  const navigate = useNavigate();
+export const Login = () => {
+  const { loginContext } = useContext(UserContext);
 
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -42,9 +42,7 @@ export const Login = ({ setIsAuth }) => {
     signIn(inputValue)
       .then((res) => {
         setErrorMsg("");
-        setIsAuth(res.user);
-        localStorage.setItem('user', JSON.stringify(res.user))
-        navigate(paths.MAIN);
+        loginContext(res);
       })
       .catch((err) => {
         setErrorMsg(err.message);

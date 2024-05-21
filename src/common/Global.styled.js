@@ -4,12 +4,14 @@ import { styled } from "styled-components";
 
 export   const lightTheme = {
   body: '#FFF',
-  text: '#363537',
+  text: '#94A6BE',
   background: '#eaeef6',
   mainBackground: '#eaeef6',
   headerUserColor: '#565eef',
   backgroundColorCard: '#ffffff',
   colorCardTitle: '#000000',
+  textPopNewCardTtl: '#000000',
+  textSubttl: '#000000',
   //backgroundColorOrange: '#ffe4c2',
   // colorOrange: '#ff6d00',
   
@@ -24,6 +26,8 @@ export const darkTheme = {
   headerUserColor: '#ffffff',
   backgroundColorCard: '#20202C',
   colorCardTitle: '#ffffff',
+  textPopNewCardTtl: '#ffffff',
+  textSubttl: '#ffffff',
   // backgroundColorOrange: '#FF6D00',
   // colorOrange: '#FFE4C2',
 

@@ -1,6 +1,6 @@
 import { Login } from "../components/Login/Login.jsx";
 
-export const LoginPage = ({ setIsAuth }) => {
+export const LoginPage = () => {
   
-  return <Login setIsAuth={setIsAuth} />;
+  return <Login />;
 };

@@ -10,7 +10,7 @@ export const Main = ({cards, isLoading, errorMsg}) => {
     <S.Main>
       <Container>
         <S.MainBlock>
-          {errorMsg ? <p>{errorMsg} </p>: ( <S.MainContent>
+          {errorMsg ? <p>{errorMsg}</p>: ( <S.MainContent>
            {isLoading ? "Данные загружаются..." : (
             <> 
             <Column
