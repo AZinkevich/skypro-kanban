@@ -15,22 +15,28 @@ export const CalendarContent = styled(DayPicker)`
     font-weight: 600;
     line-height: 16px;
     color: #94a6be;
+    text-transform: capitalize;
   }
- 
+
   .rdp-button_reset.rdp-button.rdp-day {
     font-size: 10px;
     color: #94a6be;
-    width: 28px;
-    height: 28px;
+    /* width: 28px;
+    height: 28px; */
     padding-left: 0;
     border: none;
     &:focus {
-        outline: none;
+      outline: none;
     }
   }
+  /* .rdp-button_reset.rdp-button.rdp-day.rdp-day_disabled {
+    color: #94a6be;
+  } */
+
   .rdp-head_cell {
     font-size: 10px;
     color: #94a6be;
+    text-transform: none;
   }
   .rdp-button_reset.rdp-button.rdp-day.rdp-day_selected {
     color: #fff;
@@ -41,4 +47,8 @@ export const CalendarContent = styled(DayPicker)`
     width: 168px;
     height: 172px;
   } */
+`;
+
+export const CurrentDate = styled.span`
+  color: #000;
 `;

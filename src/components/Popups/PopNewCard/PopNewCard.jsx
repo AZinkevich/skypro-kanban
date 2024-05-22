@@ -106,7 +106,7 @@ export const PopNewCard = () => {
                     value="Web Design"
                     onChange={onChangeInput}
                   />
-                  <S.PopNewCardLabel1 for="radio1">
+                  <S.PopNewCardLabel1 htmlFor="radio1">
                     <p>Web Design</p>
                   </S.PopNewCardLabel1>
                 </div>
@@ -118,7 +118,7 @@ export const PopNewCard = () => {
                     value="Research"
                     onChange={onChangeInput}
                   />
-                  <S.PopNewCardLabel2 for="radio2">
+                  <S.PopNewCardLabel2 htmlFor="radio2">
                     <p>Research</p>
                   </S.PopNewCardLabel2>
                 </div>
@@ -130,7 +130,7 @@ export const PopNewCard = () => {
                     value="Copywriting"
                     onChange={onChangeInput}
                   />
-                  <S.PopNewCardLabel3 for="radio3">
+                  <S.PopNewCardLabel3 htmlFor="radio3">
                     <p>Copywriting</p>
                   </S.PopNewCardLabel3>
                 </div>

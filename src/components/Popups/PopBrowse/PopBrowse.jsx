@@ -1,109 +1,214 @@
 import { paths } from "../../../data.js";
 //import { CalendarContent } from "../../Calendar/Calendar.jsx";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import * as S from "./PopBrowse.styled.js";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../contexts/userContext.jsx";
 import { CardContext } from "../../../contexts/cardContext.jsx";
 import { Calendar } from "../../Calendar/Calendar.jsx";
+import { deleteCard, editCard } from "../../../api/cardsApi.js";
+import { AlertMsg } from "../../Register/Register.styled.js";
 //import { useState } from "react";
 
 export const PopBrowse = () => {
   const { id } = useParams();
   const { user } = useContext(UserContext);
-  const { cards } = useContext(CardContext);
+  const { cards, setCards } = useContext(CardContext);
   const [selected, setSelected] = useState();
   const currentCard = cards.find((el) => id === el._id);
-  //const [selected, setSelected] = useState();
+  const [popEdit, setPopEdit] = useState(false);
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+
+  const [saveCards, setSaveCards] = useState({
+    title: currentCard.title,
+    description: currentCard.description,
+    topic: currentCard.topic,
+    date: currentCard.date,
+    status: currentCard.status,
+  });
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+
+    setSaveCards({
+      ...saveCards,
+      [name]: value,
+    });
+  };
+
+  useEffect(() => {
+    setPopEdit(true);
+  }, []);
+
+  const handleDeleteClick = (e) => {
+    e.preventDefault();
+
+    deleteCard({ _id: currentCard._id, token: user.token })
+      .then((res) => {
+        setCards(res.tasks);
+        navigate(paths.MAIN);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
+
+  const handleSaveClick = (e) => {
+    e.preventDefault();
+
+    const { name, value } = e.target;
+
+    setSaveCards({
+      ...saveCards,
+      [name]: value,
+    });
+
+    editCard({
+      _id: currentCard._id,
+      token: user.token,
+      newSaveCard: saveCards,
+    })
+      .then((response) => {
+        setCards(response.tasks);
+        navigate(paths.MAIN);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
 
   return (
-    <div className="pop-browse" id="popBrowse">
-      <div className="pop-browse__container">
-        <div className="pop-browse__block">
-          <div className="pop-browse__content">
-            <div className="pop-browse__top-block">
-              <h3 className="pop-browse__ttl">Название задачи {currentCard.title}</h3>
-              <div className="categories__theme theme-top _orange _active-category">
+    <S.PopBrows id="popBrowse">
+      <S.PopBrowseContainer>
+        <S.PopBrowseBlock>
+          <S.PopBrowseContent>
+            <S.PopBrowseTopBlock>
+              <S.PopBrowseTtl>
+                Название задачи {currentCard.title}
+              </S.PopBrowseTtl>
+              <S.CategotiesTheme $topic={currentCard.topic}>
                 <p className="_orange">{currentCard.topic}</p>
-              </div>
-            </div>
+              </S.CategotiesTheme>
+            </S.PopBrowseTopBlock>
             <div className="pop-browse__status status">
               <p className="status__p subttl">Статус</p>
-              <div className="status__themes">
-                <div className="status__theme _hide">
-                  <p>Без статуса</p>
-                </div>
-                <div className="status__theme _gray">
-                  <p className="_gray">{currentCard.status}</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>В работе</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>Тестирование</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>Готово</p>
-                </div>
-              </div>
+              {popEdit ? (
+                <S.StatusThemes>
+                  <S.StatusThemeLight>
+                    <p>{currentCard.status}</p>
+                  </S.StatusThemeLight>
+                </S.StatusThemes>
+              ) : (
+                <S.StatusThemes>
+                  <S.StatusTheme>
+                    <S.EditInput
+                      type="radio"
+                      id="status1"
+                      name="status"
+                      value="Без статуса"
+                      onChange={handleInputChange}
+                    />
+                    <p>Без статуса</p>
+                  </S.StatusTheme>
+                  <S.StatusTheme>
+                    <S.EditInput
+                      type="radio"
+                      id="status2"
+                      name="status"
+                      value="Нужно сделать"
+                      onChange={handleInputChange}
+                    />
+                    <p>Нужно сделать</p>
+                  </S.StatusTheme>
+                  <S.StatusTheme>
+                    <S.EditInput
+                      type="radio"
+                      id="status3"
+                      name="status"
+                      value="В работе"
+                      onChange={handleInputChange}
+                    />
+                    <p>В работе</p>
+                  </S.StatusTheme>
+                  <S.StatusTheme>
+                    <S.EditInput
+                      type="radio"
+                      id="status4"
+                      name="status"
+                      value="Тестирование"
+                      onChange={handleInputChange}
+                    />
+                    <p>Тестирование</p>
+                  </S.StatusTheme>
+                  <S.StatusTheme>
+                    <S.EditInput
+                      type="radio"
+                      id="status5"
+                      name="status"
+                      value="Готово"
+                      onChange={handleInputChange}
+                    />
+                    <p>Готово</p>
+                  </S.StatusTheme>
+                </S.StatusThemes>
+              )}
             </div>
-            <div className="pop-browse__wrap">
-              <form
-                className="pop-browse__form form-browse"
-                id="formBrowseCard"
-                action="#"
-              >
-                <div className="form-browse__block">
-                  <label htmlFor="textArea01" className="subttl">
-                    Описание задачи
-                  </label>
-                  <textarea
-                    className="form-browse__area"
+            <S.PopBrowseWrap>
+              <S.PopBrowseForm id="formBrowseCard" action="#">
+                <S.PopBrowseFormBlock>
+                  <S.Subttl htmlFor="textArea01">Описание задачи</S.Subttl>
+                  <S.FormBrowseArea
                     name="text"
                     id="textArea01"
-                    readOnly=""
+                    readOnly={true}
                     placeholder="Введите описание задачи..."
                     value={currentCard.description}
                   />
-                </div>
-              </form>
+                </S.PopBrowseFormBlock>
+              </S.PopBrowseForm>
               <div className="pop-new-card__calendar calendar">
                 <p className="calendar__ttl subttl">Даты</p>
                 <div className="calendar__block">
-                <Calendar selected={currentCard.date} />
-                  {/* <input
-                    type="hidden"
-                    id="datepick_value"
-                    defaultValue="08.09.2023"
-                  />
-                  <div className="calendar__period">
-                    <p className="calendar__p date-end">
-                      Срок исполнения:{" "}
-                      <span className="date-control">09.09.23</span>
-                    </p>
-                  </div> */}
+                  <Calendar selected={currentCard.date} />
                 </div>
               </div>
-            </div>
-            <div className="theme-down__categories theme-down">
-              <p className="categories__p subttl">Категория</p>
-              <div className="categories__theme _orange _active-category">
-                <p className="_orange">Web Design</p>
-              </div>
-            </div>
-            <div className="pop-browse__btn-browse ">
-              <div className="btn-group">
-                <button className="btn-browse__edit _btn-bor _hover03">
-                  <a href="#">Редактировать задачу</a>
-                </button>
-                <button className="btn-browse__delete _btn-bor _hover03">
-                  <a href="#">Удалить задачу</a>
-                </button>
-              </div>
+            </S.PopBrowseWrap>
+            <AlertMsg>{error && error}</AlertMsg>
+            <S.PopBrowseBtn>
+              {popEdit ? (
+                <S.BtnGroup>
+                  <S.BtnBor
+                    onClick={() => {
+                      setPopEdit(false);
+                    }}
+                  >
+                    Редактировать задачу
+                  </S.BtnBor>
+                  <S.BtnBor onClick={handleDeleteClick}>
+                    Удалить задачу
+                  </S.BtnBor>
+                </S.BtnGroup>
+              ) : (
+                <S.BtnGroup>
+                  <S.BtnBor onClick={handleSaveClick}>Сохранить</S.BtnBor>
+                  <S.BtnBor
+                    onClick={() => {
+                      setPopEdit(true);
+                    }}
+                  >
+                    Отменить
+                  </S.BtnBor>
+                  <S.BtnBor onClick={handleDeleteClick}>
+                    Удалить задачу
+                  </S.BtnBor>
+                </S.BtnGroup>
+              )}
               <S.BtnBg>
                 <Link to={paths.MAIN}>Закрыть</Link>
               </S.BtnBg>
-            </div>
+            </S.PopBrowseBtn>
             <div className="pop-browse__btn-edit _hide">
               <div className="btn-group">
                 <button className="btn-edit__edit _btn-bg _hover01">
@@ -123,9 +228,9 @@ export const PopBrowse = () => {
                 <a href="#">Закрыть</a>
               </button>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </S.PopBrowseContent>
+        </S.PopBrowseBlock>
+      </S.PopBrowseContainer>
+    </S.PopBrows>
   );
 };

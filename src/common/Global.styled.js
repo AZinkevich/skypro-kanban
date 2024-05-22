@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 
 export   const lightTheme = {
   body: '#FFF',
-  text: '#94A6BE',
+  text: '#94a6be',
   background: '#eaeef6',
   mainBackground: '#eaeef6',
   headerUserColor: '#565eef',
@@ -12,6 +12,8 @@ export   const lightTheme = {
   colorCardTitle: '#000000',
   textPopNewCardTtl: '#000000',
   textSubttl: '#000000',
+  textlight: '#ffffff',
+  backgroundColorlight: '#94A6BE',
   //backgroundColorOrange: '#ffe4c2',
   // colorOrange: '#ff6d00',
   
@@ -28,6 +30,8 @@ export const darkTheme = {
   colorCardTitle: '#ffffff',
   textPopNewCardTtl: '#ffffff',
   textSubttl: '#ffffff',
+  textlight: '#94A6BE',
+  backgroundColorlight: '#ffffff',
   // backgroundColorOrange: '#FF6D00',
   // colorOrange: '#FFE4C2',
 
