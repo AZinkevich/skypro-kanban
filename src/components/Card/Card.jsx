@@ -28,9 +28,9 @@ export const Card = ({ card }) => {
           </Link>
         </CardGroup>
         <CardContent>
-          <a href="" target="_blank">
+          
             <CardTitle>{card.title}</CardTitle>
-          </a>
+          
           <CardDate>
             <svg
               xmlns="http://www.w3.org/2000/svg"

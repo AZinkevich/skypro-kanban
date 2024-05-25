@@ -113,6 +113,7 @@ export const StatusThemeLight = styled.div`
 `;
 
 export const StatusTheme = styled.label`
+  display: inline-block;
   border-radius: 24px;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
   padding: 11px 14px 10px;
@@ -122,7 +123,7 @@ export const StatusTheme = styled.label`
   &:hover {
     background-color: #94a6be;
     & p {
-      color: ${({ theme }) => theme.text};
+      color: #fff;
     }
   }
   & p {
@@ -130,6 +131,30 @@ export const StatusTheme = styled.label`
     font-size: 14px;
     line-height: 1;
     letter-spacing: -0.14px;
+  }
+`;
+
+export const EditInput = styled.input`
+   display: none;
+  &:checked + label {
+    background-color: #94a6be;
+    & p {
+      color: #fff;
+    }
+  }
+`;
+
+export const EditLabel = styled.label`
+  color: #94a6be;
+
+  & p {
+    color: #94a6be;
+
+    &:hover {
+      color: #fff;
+
+      background-color: #94a6be;
+    }
   }
 `;
 
@@ -207,7 +232,7 @@ export const BtnGroup = styled.div`
   }
 `;
 
-export const BtnBor = styled(Hover03('button'))`
+export const BtnBor = styled(Hover03("button"))`
   border-radius: 4px;
   border: 0.7px solid var(--palette-navy-60, #565eef);
   outline: none;
@@ -226,23 +251,5 @@ export const BtnBg = styled(Hover01("button"))`
   color: #ffffff;
   & a {
     color: #ffffff;
-  }
-`;
-
-export const EditInput = styled.input`
-  display: none;
-`;
-
-export const EditLabel = styled.label`
-  color: #94a6be;
-
-  & p {
-    color: #94a6be;
-
-    &:hover {
-      color: #fff;
-
-      background-color: #94a6be;
-    }
   }
 `;

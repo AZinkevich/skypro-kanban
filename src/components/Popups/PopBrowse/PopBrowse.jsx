@@ -24,7 +24,7 @@ export const PopBrowse = () => {
     title: currentCard.title,
     description: currentCard.description,
     topic: currentCard.topic,
-    date: currentCard.date,
+    date: selected,
     status: currentCard.status,
   });
 
@@ -65,13 +65,15 @@ export const PopBrowse = () => {
       [name]: value,
     });
 
+    const newDate = selected ? selected : currentCard.date;
+    const newSaveCard = { ...saveCards, date: newDate };
     editCard({
       _id: currentCard._id,
       token: user.token,
-      newSaveCard: saveCards,
+      newSaveCard,
     })
-      .then((response) => {
-        setCards(response.tasks);
+      .then((res) => {
+        setCards(res.tasks);
         navigate(paths.MAIN);
       })
       .catch((err) => {
@@ -102,56 +104,71 @@ export const PopBrowse = () => {
                 </S.StatusThemes>
               ) : (
                 <S.StatusThemes>
-                  <S.StatusTheme>
+                  <div>
                     <S.EditInput
                       type="radio"
-                      id="status1"
+                      id="radio1"
                       name="status"
-                      value="Без статуса"
+                      value={"Без статуса"}
                       onChange={handleInputChange}
+                      //checked={currentCard.status === 'Без статуса' ? true : false}
                     />
-                    <p>Без статуса</p>
-                  </S.StatusTheme>
-                  <S.StatusTheme>
+                    <S.StatusTheme htmlFor="radio1">
+                      <p>Без статуса</p>
+                    </S.StatusTheme>
+                  </div>
+                  <div>
                     <S.EditInput
                       type="radio"
-                      id="status2"
+                      id="radio2"
                       name="status"
-                      value="Нужно сделать"
+                      value={"Нужно сделать"}
                       onChange={handleInputChange}
+                      //checked={currentCard.status === 'Нужно сделать' ? true : false}
                     />
-                    <p>Нужно сделать</p>
-                  </S.StatusTheme>
-                  <S.StatusTheme>
+                    <S.StatusTheme htmlFor="radio2">
+                      <p>Нужно сделать</p>
+                    </S.StatusTheme>
+                  </div>
+                  <div>
                     <S.EditInput
                       type="radio"
-                      id="status3"
+                      id="radio3"
                       name="status"
-                      value="В работе"
+                      value={"В работе"}
                       onChange={handleInputChange}
+                      //checked={currentCard.status === 'В работе' ? true : false}
                     />
-                    <p>В работе</p>
-                  </S.StatusTheme>
-                  <S.StatusTheme>
+                    <S.StatusTheme htmlFor="radio3">
+                      <p>В работе</p>
+                    </S.StatusTheme>
+                  </div>
+                  <div>
                     <S.EditInput
                       type="radio"
-                      id="status4"
+                      id="radio4"
                       name="status"
-                      value="Тестирование"
+                      value={"Тестирование"}
                       onChange={handleInputChange}
+                      //checked={currentCard.status === 'Тестирование' ? true : false}
                     />
-                    <p>Тестирование</p>
-                  </S.StatusTheme>
-                  <S.StatusTheme>
+                    <S.StatusTheme htmlFor="radio4">
+                      <p>Тестирование</p>
+                    </S.StatusTheme>
+                  </div>
+                  <div>
                     <S.EditInput
                       type="radio"
-                      id="status5"
+                      id="radio5"
                       name="status"
-                      value="Готово"
+                      value={"Готово"}
                       onChange={handleInputChange}
+                      //checked={currentCard.status === 'Готово' ? true : false}
                     />
-                    <p>Готово</p>
-                  </S.StatusTheme>
+                    <S.StatusTheme htmlFor="radio5">
+                      <p>Готово</p>
+                    </S.StatusTheme>
+                  </div>
                 </S.StatusThemes>
               )}
             </div>
@@ -159,20 +176,31 @@ export const PopBrowse = () => {
               <S.PopBrowseForm id="formBrowseCard" action="#">
                 <S.PopBrowseFormBlock>
                   <S.Subttl htmlFor="textArea01">Описание задачи</S.Subttl>
-                  <S.FormBrowseArea
-                    name="text"
-                    id="textArea01"
-                    readOnly={true}
-                    placeholder="Введите описание задачи..."
-                    value={currentCard.description}
-                  />
+                  {popEdit ? (
+                    <S.FormBrowseArea
+                      value={currentCard.description}
+                      name="description"
+                      id="textArea1"
+                      disabled
+                      onChange={handleInputChange}
+                    ></S.FormBrowseArea>
+                  ) : (
+                    <S.FormBrowseArea
+                      value={saveCards.description}
+                      name="description"
+                      id="textArea2"
+                      onChange={handleInputChange}
+                    ></S.FormBrowseArea>
+                  )}
                 </S.PopBrowseFormBlock>
               </S.PopBrowseForm>
               <div className="pop-new-card__calendar calendar">
                 <p className="calendar__ttl subttl">Даты</p>
-                <div className="calendar__block">
+                {popEdit ? (
                   <Calendar selected={currentCard.date} />
-                </div>
+                ) : (
+                  <Calendar selected={selected} setSelected={setSelected} />
+                )}
               </div>
             </S.PopBrowseWrap>
             <AlertMsg>{error && error}</AlertMsg>

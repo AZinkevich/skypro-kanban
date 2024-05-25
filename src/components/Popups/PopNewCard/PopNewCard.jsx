@@ -35,7 +35,7 @@ export const PopNewCard = () => {
       title,
       topic,
       status,
-      // date,
+      date: selected,
     };
 
     if (!inputValue.description) {

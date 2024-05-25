@@ -57,16 +57,16 @@ export const deleteCard = ({ _id, token }) => {
 };
 
 export const editCard = ({ _id, token, newSaveCard }) => {
-  const response = fetch(`https://wedev-api.sky.pro/api/kanban/${_id}`, {
+  return fetch(`https://wedev-api.sky.pro/api/kanban/${_id}`, {
     method: "PUT",
     headers: {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(newSaveCard),
+  }).then((res) => {
+    if (!res.ok) {
+      throw new Error("Ошибка сохранения задачи");
+    }
+    return res.json();
   });
-  if (!response.ok) {
-    throw new Error("Ошибка сохранения задачи");
-  }
-  const data = response.json();
-  return data;
 };
