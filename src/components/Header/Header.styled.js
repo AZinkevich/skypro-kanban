@@ -131,7 +131,8 @@ export const PopUserMail = styled.p`
 `;
 
 export const PopUserTheme = styled.div`
-  display: flex;
+  //display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;

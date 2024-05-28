@@ -89,6 +89,18 @@ export const CategotiesTheme = styled.div`
   }
 `;
 
+export const PopBrowseStatus = styled.div`
+  margin-bottom: 11px;
+`;
+export const PopBrowseStatusP = styled.p`
+  background-color: ${({ theme }) => theme.backgroundColorCard};
+  color: ${({ theme }) => theme.textSubttl};
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 14px;
+`;
+
 export const StatusThemes = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -112,37 +124,53 @@ export const StatusThemeLight = styled.div`
   }
 `;
 
-export const StatusTheme = styled.label`
-  display: inline-block;
+export const StatusThemeBtn = styled.button`
   border-radius: 24px;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
+  background: ${props => props.$highlighted || props.$isChecked ? '#94a6be': ' #FFFFFF'};
+  color: ${props => props.$highlighted || props.$isChecked ? '#FFFFFF': '#94a6be'};
   padding: 11px 14px 10px;
   margin-right: 7px;
   margin-bottom: 7px;
-  background-color: ${({ theme }) => theme.backgroundColorCard};
-  &:hover {
-    background-color: #94a6be;
-    & p {
-      color: #fff;
-    }
-  }
-  & p {
-    color: #94a6be;
-    font-size: 14px;
-    line-height: 1;
-    letter-spacing: -0.14px;
-  }
-`;
+ 
+ & p {
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.14px;
+ }
+`
 
-export const EditInput = styled.input`
-   display: none;
-  &:checked + label {
-    background-color: #94a6be;
-    & p {
-      color: #fff;
-    }
-  }
-`;
+// export const StatusTheme = styled.label`
+//   display: inline-block;
+//   border-radius: 24px;
+//   border: 0.7px solid rgba(148, 166, 190, 0.4);
+//   padding: 11px 14px 10px;
+//   margin-right: 7px;
+//   margin-bottom: 7px;
+//   background-color: ${({ theme }) => theme.backgroundColorCard};
+//   &:hover {
+//     background-color: #94a6be;
+//     & p {
+//       color: #fff;
+//     }
+//   }
+//   & p {
+//     color: #94a6be;
+//     font-size: 14px;
+//     line-height: 1;
+//     letter-spacing: -0.14px;
+//   }
+// `;
+
+// export const RadioInput = styled.input`
+//   //display: none;
+//   &:checked + label {
+//     background-color: #94a6be;
+//     & p {
+//       color: #fff;
+//     }
+//   }
+// `;
 
 export const EditLabel = styled.label`
   color: #94a6be;
@@ -253,3 +281,5 @@ export const BtnBg = styled(Hover01("button"))`
     color: #ffffff;
   }
 `;
+
+

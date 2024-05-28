@@ -8,6 +8,7 @@ import { CardContext } from "../../../contexts/cardContext.jsx";
 import { Calendar } from "../../Calendar/Calendar.jsx";
 import { deleteCard, editCard } from "../../../api/cardsApi.js";
 import { AlertMsg } from "../../Register/Register.styled.js";
+
 //import { useState } from "react";
 
 export const PopBrowse = () => {
@@ -19,6 +20,7 @@ export const PopBrowse = () => {
   const [popEdit, setPopEdit] = useState(false);
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const [isStatus, setIsStatus] = useState(false);
 
   const [saveCards, setSaveCards] = useState({
     title: currentCard.title,
@@ -28,9 +30,20 @@ export const PopBrowse = () => {
     status: currentCard.status,
   });
 
+  const statusList = [
+    "Без статуса",
+    "Нужно сделать",
+    "В работе",
+    "Тестирование",
+    "Готово",
+  ];
+
   const handleInputChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
+
+    console.log(currentCard.status);
+    console.log(isStatus);
 
     setSaveCards({
       ...saveCards,
@@ -53,6 +66,12 @@ export const PopBrowse = () => {
       .catch((err) => {
         setError(err.message);
       });
+  };
+
+  const changeStatus = (Status) => {
+    setSaveCards({ ...saveCards, status: Status });
+    //console.log(Status);
+    setIsStatus(Status);
   };
 
   const handleSaveClick = (e) => {
@@ -94,84 +113,27 @@ export const PopBrowse = () => {
                 <p className="_orange">{currentCard.topic}</p>
               </S.CategotiesTheme>
             </S.PopBrowseTopBlock>
-            <div className="pop-browse__status status">
-              <p className="status__p subttl">Статус</p>
-              {popEdit ? (
-                <S.StatusThemes>
-                  <S.StatusThemeLight>
+            <S.PopBrowseStatus>
+              <S.PopBrowseStatusP>Статус</S.PopBrowseStatusP>
+              <S.StatusThemes>
+                {popEdit ? (
+                  <S.StatusThemeBtn $highlighted value={currentCard.status}>
                     <p>{currentCard.status}</p>
-                  </S.StatusThemeLight>
-                </S.StatusThemes>
-              ) : (
-                <S.StatusThemes>
-                  <div>
-                    <S.EditInput
-                      type="radio"
-                      id="radio1"
-                      name="status"
-                      value={"Без статуса"}
-                      onChange={handleInputChange}
-                      //checked={currentCard.status === 'Без статуса' ? true : false}
-                    />
-                    <S.StatusTheme htmlFor="radio1">
-                      <p>Без статуса</p>
-                    </S.StatusTheme>
-                  </div>
-                  <div>
-                    <S.EditInput
-                      type="radio"
-                      id="radio2"
-                      name="status"
-                      value={"Нужно сделать"}
-                      onChange={handleInputChange}
-                      //checked={currentCard.status === 'Нужно сделать' ? true : false}
-                    />
-                    <S.StatusTheme htmlFor="radio2">
-                      <p>Нужно сделать</p>
-                    </S.StatusTheme>
-                  </div>
-                  <div>
-                    <S.EditInput
-                      type="radio"
-                      id="radio3"
-                      name="status"
-                      value={"В работе"}
-                      onChange={handleInputChange}
-                      //checked={currentCard.status === 'В работе' ? true : false}
-                    />
-                    <S.StatusTheme htmlFor="radio3">
-                      <p>В работе</p>
-                    </S.StatusTheme>
-                  </div>
-                  <div>
-                    <S.EditInput
-                      type="radio"
-                      id="radio4"
-                      name="status"
-                      value={"Тестирование"}
-                      onChange={handleInputChange}
-                      //checked={currentCard.status === 'Тестирование' ? true : false}
-                    />
-                    <S.StatusTheme htmlFor="radio4">
-                      <p>Тестирование</p>
-                    </S.StatusTheme>
-                  </div>
-                  <div>
-                    <S.EditInput
-                      type="radio"
-                      id="radio5"
-                      name="status"
-                      value={"Готово"}
-                      onChange={handleInputChange}
-                      //checked={currentCard.status === 'Готово' ? true : false}
-                    />
-                    <S.StatusTheme htmlFor="radio5">
-                      <p>Готово</p>
-                    </S.StatusTheme>
-                  </div>
-                </S.StatusThemes>
-              )}
-            </div>
+                  </S.StatusThemeBtn>
+                ) : (
+                  statusList.map((Status) => (
+                    <S.StatusThemeBtn
+                      key={Status}
+                      $highlighted={Status === currentCard.status}
+                      $isChecked={Status === isStatus}
+                      onClick={() => changeStatus(Status)}
+                    >
+                      <p>{Status}</p>
+                    </S.StatusThemeBtn>
+                  ))
+                )}
+              </S.StatusThemes>
+            </S.PopBrowseStatus>
             <S.PopBrowseWrap>
               <S.PopBrowseForm id="formBrowseCard" action="#">
                 <S.PopBrowseFormBlock>
@@ -237,25 +199,6 @@ export const PopBrowse = () => {
                 <Link to={paths.MAIN}>Закрыть</Link>
               </S.BtnBg>
             </S.PopBrowseBtn>
-            <div className="pop-browse__btn-edit _hide">
-              <div className="btn-group">
-                <button className="btn-edit__edit _btn-bg _hover01">
-                  <a href="#">Сохранить</a>
-                </button>
-                <button className="btn-edit__edit _btn-bor _hover03">
-                  <a href="#">Отменить</a>
-                </button>
-                <button
-                  className="btn-edit__delete _btn-bor _hover03"
-                  id="btnDelete"
-                >
-                  <a href="#">Удалить задачу</a>
-                </button>
-              </div>
-              <button className="btn-edit__close _btn-bg _hover01">
-                <a href="#">Закрыть</a>
-              </button>
-            </div>
           </S.PopBrowseContent>
         </S.PopBrowseBlock>
       </S.PopBrowseContainer>
