@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { paths } from "../../data.js";
+import { paths } from "../../lib/data.js";
 import {
   Wrapper,
   ContainerSignin,

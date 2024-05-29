@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Hover01, Hover03 } from "../../../common/Global.styled";
+import { device } from "../../../lib/breakpoints.js";
 
 export const PopExit = styled.div`
   display: block;
@@ -48,6 +49,7 @@ export const PopExitTtl = styled.div`
     line-height: 30px;
     letter-spacing: -0.4px;
     margin-bottom: 20px;
+    color: #000;
   }
 `;
 
@@ -58,7 +60,7 @@ export const PopExitGroup = styled.div`
   justify-content: space-between;
 `;
 
-export const PopExitYes = styled(Hover01('button'))`
+export const PopExitYes = styled(Hover01("button"))`
   width: 153px;
   height: 30px;
   background-color: #565eef;
@@ -82,9 +84,12 @@ export const PopExitYes = styled(Hover01('button'))`
     align-items: center;
     justify-content: center;
   }
+  @media ${device.md} {
+    font-size: 12px;
+  }
 `;
 
-export const PopExitNo = styled(Hover03('button'))`
+export const PopExitNo = styled(Hover03("button"))`
   width: 180px;
   height: 30px;
   background-color: transparent;
@@ -106,5 +111,8 @@ export const PopExitNo = styled(Hover03('button'))`
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  @media ${device.md} {
+    font-size: 12px;
   }
 `;

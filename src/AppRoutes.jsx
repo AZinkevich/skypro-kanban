@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { paths } from "./data.js";
+import { paths } from "./lib/data.js";
 import { MainPage } from "./pages/MainPage.jsx";
 import { CardPage } from "./pages/CardPage.jsx";
 import { ExitPage } from "./pages/ExitPage.jsx";

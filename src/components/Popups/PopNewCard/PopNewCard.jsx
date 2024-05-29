@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { paths } from "../../../data.js";
+import { paths } from "../../../lib/data.js";
 import { useContext, useState } from "react";
 import { addNewCardApi } from "../../../api/cardsApi.js";
 import { UserContext } from "../../../contexts/userContext.jsx";
@@ -64,7 +64,9 @@ export const PopNewCard = () => {
           <S.PopNewCardContent>
             <S.PopNewCardTtl>Создание задачи</S.PopNewCardTtl>
             <Link to={paths.MAIN} className="pop-new-card__close">
+              <S.PopNewCardClose>
               ✖
+              </S.PopNewCardClose>
             </Link>
             <S.PopNewCardWrap>
               <S.PopNewCardForm id="formNewCard" action="#">

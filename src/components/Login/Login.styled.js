@@ -48,6 +48,7 @@ export const ModalTtl = styled.div`
     line-height: 30px;
     letter-spacing: -0.6px;
     margin-bottom: 20px;
+    color: #000;
   }
 `;
 

@@ -1,5 +1,4 @@
-import { paths } from "../../../data.js";
-//import { CalendarContent } from "../../Calendar/Calendar.jsx";
+import { paths, statusList } from "../../../lib/data.js";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import * as S from "./PopBrowse.styled.js";
 import { useContext, useEffect, useState } from "react";
@@ -8,8 +7,6 @@ import { CardContext } from "../../../contexts/cardContext.jsx";
 import { Calendar } from "../../Calendar/Calendar.jsx";
 import { deleteCard, editCard } from "../../../api/cardsApi.js";
 import { AlertMsg } from "../../Register/Register.styled.js";
-
-//import { useState } from "react";
 
 export const PopBrowse = () => {
   const { id } = useParams();
@@ -30,20 +27,12 @@ export const PopBrowse = () => {
     status: currentCard.status,
   });
 
-  const statusList = [
-    "Без статуса",
-    "Нужно сделать",
-    "В работе",
-    "Тестирование",
-    "Готово",
-  ];
-
   const handleInputChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
 
-    console.log(currentCard.status);
-    console.log(isStatus);
+    // console.log(currentCard.status);
+    // console.log(isStatus);
 
     setSaveCards({
       ...saveCards,
@@ -109,9 +98,9 @@ export const PopBrowse = () => {
               <S.PopBrowseTtl>
                 Название задачи {currentCard.title}
               </S.PopBrowseTtl>
-              <S.CategotiesTheme $topic={currentCard.topic}>
-                <p className="_orange">{currentCard.topic}</p>
-              </S.CategotiesTheme>
+              <S.CategoriesTheme $topic={currentCard.topic}>
+                <p>{currentCard.topic}</p>
+              </S.CategoriesTheme>
             </S.PopBrowseTopBlock>
             <S.PopBrowseStatus>
               <S.PopBrowseStatusP>Статус</S.PopBrowseStatusP>
@@ -144,15 +133,14 @@ export const PopBrowse = () => {
                       name="description"
                       id="textArea1"
                       disabled
-                      onChange={handleInputChange}
                     ></S.FormBrowseArea>
                   ) : (
-                    <S.FormBrowseArea
+                    <S.FormBrowseArea_2
                       value={saveCards.description}
                       name="description"
                       id="textArea2"
                       onChange={handleInputChange}
-                    ></S.FormBrowseArea>
+                    ></S.FormBrowseArea_2>
                   )}
                 </S.PopBrowseFormBlock>
               </S.PopBrowseForm>

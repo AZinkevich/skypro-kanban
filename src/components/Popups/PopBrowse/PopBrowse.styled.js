@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Hover01, Hover03 } from "../../../common/Global.styled";
 import { topicStyles } from "../../../lib/topic.js";
+import { device } from "../../../lib/breakpoints.js";
 
 export const PopBrows = styled.div`
   display: block;
@@ -37,6 +38,9 @@ export const PopBrowseBlock = styled.div`
   border-radius: 10px;
   border: 0.7px solid #d4dbe5;
   position: relative;
+  @media ${device.sm} {
+    padding: 20px 15px 19px;
+  }
 `;
 
 export const PopBrowseContent = styled.div`
@@ -44,6 +48,9 @@ export const PopBrowseContent = styled.div`
   text-align: left;
   opacity: 1;
   margin-bottom: 20px;
+  @media ${device.sm} {
+    margin: 0px;
+  }
 `;
 
 export const PopBrowseTopBlock = styled.div`
@@ -51,6 +58,11 @@ export const PopBrowseTopBlock = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 18px;
+  @media ${device.sm} {
+    flex-direction: column;
+    gap: 10px;
+    align-items: start;
+  }
 `;
 
 export const PopBrowseTtl = styled.h3`
@@ -61,7 +73,7 @@ export const PopBrowseTtl = styled.h3`
   line-height: 24px;
 `;
 
-export const CategotiesTheme = styled.div`
+export const CategoriesTheme = styled.div`
   display: inline-block;
   width: auto;
   height: 30px;
@@ -76,6 +88,9 @@ export const CategotiesTheme = styled.div`
     const background = topicStyles[$topic]?.backgroundColor || "#94A6BE";
     return $theme === "dark" ? topicStyles[$topic]?.text : background;
   }};
+  @media ${device.sm} {
+    padding: 8px 10px;
+  }
   & p {
     font-size: 14px;
     font-weight: 600;
@@ -86,6 +101,11 @@ export const CategotiesTheme = styled.div`
 
       return $theme === "dark" ? "#FFFFFF" : color;
     }};
+    @media ${device.sm} {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 14px;
+    }
   }
 `;
 
@@ -108,22 +128,6 @@ export const StatusThemes = styled.div`
   justify-content: flex-start;
 `;
 
-export const StatusThemeLight = styled.div`
-  border-radius: 24px;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
-  color: ${({ theme }) => theme.textlight};
-  background-color: ${({ theme }) => theme.backgroundColorlight};
-  //color: ${({ $theme }) => ($theme === "dark" ? "#000" : "#94a6be")};
-  padding: 11px 14px 10px;
-  margin-right: 7px;
-  margin-bottom: 7px;
-  & p {
-    font-size: 14px;
-    line-height: 1;
-    letter-spacing: -0.14px;
-  }
-`;
-
 export const StatusThemeBtn = styled.button`
   border-radius: 24px;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
@@ -132,64 +136,28 @@ export const StatusThemeBtn = styled.button`
   padding: 11px 14px 10px;
   margin-right: 7px;
   margin-bottom: 7px;
- 
+  @media ${device.md} {
+    padding: 8px 10px;
+  }
  & p {
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.14px;
+  @media ${device.md} {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 14px;
+    }
  }
 `
-
-// export const StatusTheme = styled.label`
-//   display: inline-block;
-//   border-radius: 24px;
-//   border: 0.7px solid rgba(148, 166, 190, 0.4);
-//   padding: 11px 14px 10px;
-//   margin-right: 7px;
-//   margin-bottom: 7px;
-//   background-color: ${({ theme }) => theme.backgroundColorCard};
-//   &:hover {
-//     background-color: #94a6be;
-//     & p {
-//       color: #fff;
-//     }
-//   }
-//   & p {
-//     color: #94a6be;
-//     font-size: 14px;
-//     line-height: 1;
-//     letter-spacing: -0.14px;
-//   }
-// `;
-
-// export const RadioInput = styled.input`
-//   //display: none;
-//   &:checked + label {
-//     background-color: #94a6be;
-//     & p {
-//       color: #fff;
-//     }
-//   }
-// `;
-
-export const EditLabel = styled.label`
-  color: #94a6be;
-
-  & p {
-    color: #94a6be;
-
-    &:hover {
-      color: #fff;
-
-      background-color: #94a6be;
-    }
-  }
-`;
-
 export const PopBrowseWrap = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 30px;
+  @media ${device.md} {
+    flex-direction: column;
+    gap: 0px;
+  }
 `;
 export const PopBrowseForm = styled.form`
   max-width: 370px;
@@ -238,6 +206,43 @@ export const FormBrowseArea = styled.textarea`
     color: #94a6be;
     letter-spacing: -0.14px;
   }
+  @media ${device.sm} {
+    height: 150px;
+  }
+`;
+
+export const FormBrowseArea_2 = styled.textarea`
+  max-width: 370px;
+  margin-top: 14px;
+  height: 200px;
+  width: 100%;
+  outline: none;
+  padding: 14px;
+  background: transparent;
+  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.14px;
+  color: ${({ theme }) => theme.text};
+
+  &::-moz-placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1px;
+    color: #94a6be;
+    letter-spacing: -0.14px;
+  }
+  &::placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1px;
+    color: #94a6be;
+    letter-spacing: -0.14px;
+  }
+  @media ${device.sm} {
+    height: 150px;
+  }
 `;
 
 export const PopBrowseBtn = styled.div`
@@ -266,6 +271,9 @@ export const BtnBor = styled(Hover03("button"))`
   outline: none;
   background: transparent;
   color: #565eef;
+  @media ${device.md} {
+    font-size: 12px;
+  }
   & a {
     color: #565eef;
   }
@@ -277,6 +285,9 @@ export const BtnBg = styled(Hover01("button"))`
   border: none;
   outline: none;
   color: #ffffff;
+  @media ${device.md} {
+    font-size: 12px;
+  }
   & a {
     color: #ffffff;
   }

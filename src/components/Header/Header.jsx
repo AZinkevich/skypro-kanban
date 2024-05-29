@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Container } from "../../common/Common.styled.js";
 import * as S from "./Header.styled.js";
-import { paths } from "../../data.js";
+import { paths } from "../../lib/data.js";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext.jsx";
 

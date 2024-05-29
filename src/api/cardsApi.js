@@ -25,7 +25,6 @@ export const addNewCardApi = ({ newCard, token }) => {
     method: "POST",
     body: JSON.stringify(newCard),
   }).then((res) => {
-    console.log(newCard);
     if (res.status === 500) {
       throw new Error("Ошибка сервера");
     }
