@@ -4,10 +4,18 @@ import styled from "styled-components";
 export const CalendarContent = styled(DayPicker)`
   width: 168px;
   font-size: 10px;
+  
+  td.rdp-cell, th.rdp-head_cell {
+    height: 26px;
+  }
 
-  .rdp-nav_icon {
+ .rdp-nav_icon {
     width: 12px;
     height: 12px;
+  }
+
+  .rdp-tfoot {
+    height: 26px;
   }
 
   .rdp-caption_label {
@@ -21,8 +29,8 @@ export const CalendarContent = styled(DayPicker)`
   .rdp-button_reset.rdp-button.rdp-day {
     font-size: 10px;
     color: #94a6be;
-    /* width: 28px;
-    height: 28px; */
+    width: 26px;
+    height: 26px;
     padding-left: 0;
     border: none;
     &:focus {

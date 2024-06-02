@@ -33,7 +33,7 @@ export const HeaderNav = styled.div`
 `;
 
 export const HeaderButtonNew = styled(Hover01('button'))`
-  width: 185px;
+  width: 250px;
   height: 30px;
   border-radius: 4px;
   background-color: #565eef;

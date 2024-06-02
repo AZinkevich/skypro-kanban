@@ -20,11 +20,11 @@ export const PopBrowse = () => {
   const [isStatus, setIsStatus] = useState(false);
 
   const [saveCards, setSaveCards] = useState({
-    title: currentCard.title,
-    description: currentCard.description,
-    topic: currentCard.topic,
+    title: currentCard?.title,
+    description: currentCard?.description,
+    topic: currentCard?.topic,
     date: selected,
-    status: currentCard.status,
+    status: currentCard?.status,
   });
 
   const handleInputChange = (e) => {
@@ -96,25 +96,25 @@ export const PopBrowse = () => {
           <S.PopBrowseContent>
             <S.PopBrowseTopBlock>
               <S.PopBrowseTtl>
-                Название задачи {currentCard.title}
+                Название задачи {currentCard?.title}
               </S.PopBrowseTtl>
-              <S.CategoriesTheme $topic={currentCard.topic}>
-                <p>{currentCard.topic}</p>
+              <S.CategoriesTheme $topic={currentCard?.topic}>
+                <p>{currentCard?.topic}</p>
               </S.CategoriesTheme>
             </S.PopBrowseTopBlock>
             <S.PopBrowseStatus>
               <S.PopBrowseStatusP>Статус</S.PopBrowseStatusP>
               <S.StatusThemes>
                 {popEdit ? (
-                  <S.StatusThemeBtn $highlighted value={currentCard.status}>
-                    <p>{currentCard.status}</p>
+                  <S.StatusThemeBtn $highlighted value={currentCard?.status}>
+                    <p>{currentCard?.status}</p> 
                   </S.StatusThemeBtn>
                 ) : (
                   statusList.map((Status) => (
                     <S.StatusThemeBtn
                       key={Status}
-                      $highlighted={Status === currentCard.status}
-                      $isChecked={Status === isStatus}
+                      //$highlighted={Status === currentCard.status}
+                      $isChecked={Status === isStatus}                      
                       onClick={() => changeStatus(Status)}
                     >
                       <p>{Status}</p>
@@ -129,14 +129,14 @@ export const PopBrowse = () => {
                   <S.Subttl htmlFor="textArea01">Описание задачи</S.Subttl>
                   {popEdit ? (
                     <S.FormBrowseArea
-                      value={currentCard.description}
+                      value={currentCard?.description}
                       name="description"
                       id="textArea1"
                       disabled
                     ></S.FormBrowseArea>
                   ) : (
                     <S.FormBrowseArea_2
-                      value={saveCards.description}
+                      value={saveCards?.description}
                       name="description"
                       id="textArea2"
                       onChange={handleInputChange}
@@ -144,10 +144,10 @@ export const PopBrowse = () => {
                   )}
                 </S.PopBrowseFormBlock>
               </S.PopBrowseForm>
-              <div className="pop-new-card__calendar calendar">
-                <p className="calendar__ttl subttl">Даты</p>
+              <div>
+                <S.Subttl>Даты</S.Subttl>
                 {popEdit ? (
-                  <Calendar selected={currentCard.date} />
+                  <Calendar selected={currentCard?.date} />
                 ) : (
                   <Calendar selected={selected} setSelected={setSelected} />
                 )}

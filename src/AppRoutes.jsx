@@ -7,7 +7,7 @@ import { LoginPage } from "./pages/LoginPage.jsx";
 import { NewCardPage } from "./pages/NewCardPage.jsx";
 import { RegisterPage } from "./pages/RegisterPage.jsx";
 import { NotFoundPage } from "./pages/NotFoundPage.jsx";
-import { PrivateRoute } from "./PrivateRoute.jsx";
+import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute.jsx";
 
 export const AppRoutes = ({ themeColor, setThemeColor }) => {
   return (

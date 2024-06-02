@@ -26,11 +26,11 @@ export const Header = ({ setTheme, theme }) => {
           <div>
             {theme ? (
               <a href="" target="_self">
-                <S.HeaderLogoImg src="../public/logo.png" alt="logo" />
+                <S.HeaderLogoImg src="/logo.png" alt="logo" />
               </a>
             ) : (
               <a href="" target="_self">
-                <S.HeaderLogoImg src="../public/logo_dark.png" alt="logo" />
+                <S.HeaderLogoImg src="/logo_dark.png" alt="logo" />
               </a>
             )}
           </div>

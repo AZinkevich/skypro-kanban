@@ -9,11 +9,11 @@ import { CardProvider } from "./contexts/cardContext.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <CardProvider>
-        <UserProvider>
+      <UserProvider>
+        <CardProvider>
           <App />
-        </UserProvider>
-      </CardProvider>
+        </CardProvider>
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
