@@ -19,7 +19,7 @@ export const PopBrowse = () => {
   const [error, setError] = useState("");
   const [isStatus, setIsStatus] = useState(false);
   const [oldStatus, setOldStatus] = useState(currentCard?.status);
-
+  
   const [saveCards, setSaveCards] = useState({
     title: currentCard?.title,
     description: currentCard?.description,
@@ -60,13 +60,13 @@ export const PopBrowse = () => {
 
   const changeStatus = (Status) => {
     setSaveCards({ ...saveCards, status: Status });
-    setOldStatus(currentCard?.status);
+
     setIsStatus(Status);
     currentCard.status = null;
 
-    console.log(Status);
-    console.log(currentCard.status);
-    console.log(oldStatus);
+    // console.log(Status);
+    // console.log(currentCard.status);
+    // console.log(oldStatus);
   };
 
   const handleSaveClick = (e) => {
@@ -171,6 +171,7 @@ export const PopBrowse = () => {
                   <S.BtnBor
                     onClick={() => {
                       setPopEdit(false);
+                      setOldStatus(currentCard?.status);
                     }}
                   >
                     Редактировать задачу
@@ -186,8 +187,9 @@ export const PopBrowse = () => {
                     onClick={() => {
                       setPopEdit(true);
                       setIsStatus(oldStatus);
-                      console.log(oldStatus);
-                      console.log(isStatus);
+                      currentCard.status = oldStatus;
+                      // console.log(oldStatus);
+                      // console.log(isStatus);
                     }}
                   >
                     Отменить
