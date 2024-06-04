@@ -41,6 +41,9 @@ export const PopNewCard = () => {
     if (!inputValue.description) {
       return setError("Заполните поле описания");
     }
+    if (!inputValue.date) {
+      return setError("Выберите дату");
+    }
 
     addNewCardApi({ newCard, token: user.token })
       .then((res) => {

@@ -59,6 +59,7 @@ export const HeaderButtonNew = styled(Hover01('button'))`
 
 export const HeaderButtonText = styled.a`
   color: #ffffff;
+  font-size: 14px;
 
   &:hover {
     color: #565eef;

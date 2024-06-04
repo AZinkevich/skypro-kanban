@@ -1,5 +1,5 @@
 import { paths, statusList } from "../../../lib/data.js";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as S from "./PopBrowse.styled.js";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../contexts/userContext.jsx";
@@ -18,6 +18,7 @@ export const PopBrowse = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [isStatus, setIsStatus] = useState(false);
+  const [oldStatus, setOldStatus] = useState(currentCard?.status);
 
   const [saveCards, setSaveCards] = useState({
     title: currentCard?.title,
@@ -59,8 +60,13 @@ export const PopBrowse = () => {
 
   const changeStatus = (Status) => {
     setSaveCards({ ...saveCards, status: Status });
-    //console.log(Status);
+    setOldStatus(currentCard?.status);
     setIsStatus(Status);
+    currentCard.status = null;
+
+    console.log(Status);
+    console.log(currentCard.status);
+    console.log(oldStatus);
   };
 
   const handleSaveClick = (e) => {
@@ -89,6 +95,11 @@ export const PopBrowse = () => {
       });
   };
 
+  const handleClose = (e) => {
+    e.preventDefault();
+    navigate(paths.MAIN);
+  };
+
   return (
     <S.PopBrows id="popBrowse">
       <S.PopBrowseContainer>
@@ -106,15 +117,15 @@ export const PopBrowse = () => {
               <S.PopBrowseStatusP>Статус</S.PopBrowseStatusP>
               <S.StatusThemes>
                 {popEdit ? (
-                  <S.StatusThemeBtn $highlighted value={currentCard?.status}>
-                    <p>{currentCard?.status}</p> 
+                  <S.StatusThemeBtn $highlighted value={oldStatus}>
+                    <p>{oldStatus}</p>
                   </S.StatusThemeBtn>
                 ) : (
                   statusList.map((Status) => (
                     <S.StatusThemeBtn
                       key={Status}
-                      //$highlighted={Status === currentCard.status}
-                      $isChecked={Status === isStatus}                      
+                      $highlighted={Status === currentCard?.status}
+                      $isChecked={Status === isStatus}
                       onClick={() => changeStatus(Status)}
                     >
                       <p>{Status}</p>
@@ -174,6 +185,9 @@ export const PopBrowse = () => {
                   <S.BtnBor
                     onClick={() => {
                       setPopEdit(true);
+                      setIsStatus(oldStatus);
+                      console.log(oldStatus);
+                      console.log(isStatus);
                     }}
                   >
                     Отменить
@@ -183,8 +197,9 @@ export const PopBrowse = () => {
                   </S.BtnBor>
                 </S.BtnGroup>
               )}
-              <S.BtnBg>
-                <Link to={paths.MAIN}>Закрыть</Link>
+              <S.BtnBg onClick={handleClose}>
+                Закрыть
+                {/* <Link to={paths.MAIN}>Закрыть</Link> */}
               </S.BtnBg>
             </S.PopBrowseBtn>
           </S.PopBrowseContent>
