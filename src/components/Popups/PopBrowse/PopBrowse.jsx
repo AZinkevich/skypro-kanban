@@ -17,7 +17,6 @@ export const PopBrowse = () => {
   const [popEdit, setPopEdit] = useState(false);
   const navigate = useNavigate();
   const [error, setError] = useState("");
-  const [isStatus, setIsStatus] = useState(false);
   const [oldStatus, setOldStatus] = useState(currentCard?.status);
   
   const [saveCards, setSaveCards] = useState({
@@ -31,9 +30,6 @@ export const PopBrowse = () => {
   const handleInputChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-
-    // console.log(currentCard.status);
-    // console.log(isStatus);
 
     setSaveCards({
       ...saveCards,
@@ -60,13 +56,6 @@ export const PopBrowse = () => {
 
   const changeStatus = (Status) => {
     setSaveCards({ ...saveCards, status: Status });
-
-    setIsStatus(Status);
-    currentCard.status = null;
-
-    // console.log(Status);
-    // console.log(currentCard.status);
-    // console.log(oldStatus);
   };
 
   const handleSaveClick = (e) => {
@@ -124,8 +113,8 @@ export const PopBrowse = () => {
                   statusList.map((Status) => (
                     <S.StatusThemeBtn
                       key={Status}
-                      $highlighted={Status === currentCard?.status}
-                      $isChecked={Status === isStatus}
+                      //$highlighted={Status === currentCard?.status}
+                      $isChecked={Status === saveCards.status}
                       onClick={() => changeStatus(Status)}
                     >
                       <p>{Status}</p>
@@ -186,8 +175,9 @@ export const PopBrowse = () => {
                   <S.BtnBor
                     onClick={() => {
                       setPopEdit(true);
-                      setIsStatus(oldStatus);
-                      currentCard.status = oldStatus;
+                      //setIsStatus(oldStatus);
+                      setSaveCards({...saveCards, status: oldStatus})
+                      //currentCard.status = oldStatus;
                       // console.log(oldStatus);
                       // console.log(isStatus);
                     }}

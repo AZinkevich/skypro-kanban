@@ -14,7 +14,7 @@ export const PopNewCard = () => {
   const { setCards } = useContext(CardContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState(null);
   //const [date, setDate] = useState(new Date());
   const [inputValue, setInputValue] = useState({
     title: "",
@@ -23,13 +23,26 @@ export const PopNewCard = () => {
     description: "",
   });
 
-  //const currentData = date.toLocaleDateString("ru-RU");
-
   const onAddNewCard = () => {
     setError("");
-    const title = !inputValue.title ? "Новая задача" : inputValue.title;
-    const topic = !inputValue.topic ? "Research" : inputValue.topic;
-    const status = !inputValue.status ? "Без статуса" : inputValue.status;
+    
+    
+    if (!inputValue.title.trim()) {
+      return setError("Заполните заголовок");
+    }
+    if (!inputValue.description.trim()) {
+      return setError("Заполните поле описания");
+    }
+    if (!selected) {
+      return setError("Выберите дату");
+    }
+    if (!inputValue.topic) {
+      return setError("Выберите категорию");
+    }
+
+    const title = inputValue.title || "Новая задача"
+    const topic = inputValue.topic || "Research"
+    const status = inputValue.status || "Без статуса"
     const newCard = {
       description: inputValue.description,
       title,
@@ -38,12 +51,6 @@ export const PopNewCard = () => {
       date: selected,
     };
 
-    if (!inputValue.description) {
-      return setError("Заполните поле описания");
-    }
-    if (!inputValue.date) {
-      return setError("Выберите дату");
-    }
 
     addNewCardApi({ newCard, token: user.token })
       .then((res) => {
