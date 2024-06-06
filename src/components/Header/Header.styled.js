@@ -25,7 +25,7 @@ export const HeaderLogoImg = styled.img`
 `;
 
 export const HeaderNav = styled.div`
-  max-width: 290px;
+  max-width: 350px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -34,7 +34,7 @@ export const HeaderNav = styled.div`
 
 export const HeaderButtonNew = styled(Hover01('button'))`
   width: 250px;
-  height: 30px;
+  min-height: 30px;
   border-radius: 4px;
   background-color: #565eef;
   color: #ffffff;
