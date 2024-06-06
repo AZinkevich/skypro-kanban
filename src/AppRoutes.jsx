@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { paths } from "./data.js";
+import { paths } from "./lib/data.js";
 import { MainPage } from "./pages/MainPage.jsx";
 import { CardPage } from "./pages/CardPage.jsx";
 import { ExitPage } from "./pages/ExitPage.jsx";
@@ -7,7 +7,7 @@ import { LoginPage } from "./pages/LoginPage.jsx";
 import { NewCardPage } from "./pages/NewCardPage.jsx";
 import { RegisterPage } from "./pages/RegisterPage.jsx";
 import { NotFoundPage } from "./pages/NotFoundPage.jsx";
-import { PrivateRoute } from "./PrivateRoute.jsx";
+import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute.jsx";
 
 export const AppRoutes = ({ themeColor, setThemeColor }) => {
   return (

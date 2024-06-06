@@ -25,7 +25,7 @@ export const HeaderLogoImg = styled.img`
 `;
 
 export const HeaderNav = styled.div`
-  max-width: 290px;
+  max-width: 350px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -33,8 +33,8 @@ export const HeaderNav = styled.div`
 `;
 
 export const HeaderButtonNew = styled(Hover01('button'))`
-  width: 185px;
-  height: 30px;
+  width: 250px;
+  min-height: 30px;
   border-radius: 4px;
   background-color: #565eef;
   color: #ffffff;
@@ -59,6 +59,7 @@ export const HeaderButtonNew = styled(Hover01('button'))`
 
 export const HeaderButtonText = styled.a`
   color: #ffffff;
+  font-size: 14px;
 
   &:hover {
     color: #565eef;
@@ -71,6 +72,7 @@ export const HeaderUser = styled(Hover02('a'))`
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   color: ${({theme}) => theme.headerUserColor};
@@ -100,7 +102,7 @@ export const HeaderPopSet = styled.div`
   top: 61px;
   right: 0;
   width: 213px;
-  height: 205px;
+  height: 155px;
   border-radius: 10px;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
   background: #fff;
@@ -131,7 +133,8 @@ export const PopUserMail = styled.p`
 `;
 
 export const PopUserTheme = styled.div`
-  display: flex;
+  //display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;

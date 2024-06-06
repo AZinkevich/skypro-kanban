@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Container } from "../../common/Common.styled.js";
 import * as S from "./Header.styled.js";
-import { paths } from "../../data.js";
+import { paths } from "../../lib/data.js";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext.jsx";
 
@@ -26,11 +26,11 @@ export const Header = ({ setTheme, theme }) => {
           <div>
             {theme ? (
               <a href="" target="_self">
-                <S.HeaderLogoImg src="../public/logo.png" alt="logo" />
+                <S.HeaderLogoImg src="/logo.png" alt="logo" />
               </a>
             ) : (
               <a href="" target="_self">
-                <S.HeaderLogoImg src="../public/logo_dark.png" alt="logo" />
+                <S.HeaderLogoImg src="/logo_dark.png" alt="logo" />
               </a>
             )}
           </div>

@@ -1,5 +1,5 @@
 import { Link, useNavigate} from "react-router-dom";
-import { paths } from "../../data";
+import { paths } from "../../lib/data.js";
 import {
   Wrapper,
   ContainerSignup,

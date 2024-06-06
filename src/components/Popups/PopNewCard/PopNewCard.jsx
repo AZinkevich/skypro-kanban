@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { paths } from "../../../data.js";
+import { paths } from "../../../lib/data.js";
 import { useContext, useState } from "react";
 import { addNewCardApi } from "../../../api/cardsApi.js";
 import { UserContext } from "../../../contexts/userContext.jsx";
@@ -14,7 +14,7 @@ export const PopNewCard = () => {
   const { setCards } = useContext(CardContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState(null);
   //const [date, setDate] = useState(new Date());
   const [inputValue, setInputValue] = useState({
     title: "",
@@ -23,24 +23,34 @@ export const PopNewCard = () => {
     description: "",
   });
 
-  //const currentData = date.toLocaleDateString("ru-RU");
-
   const onAddNewCard = () => {
     setError("");
-    const title = !inputValue.title ? "Новая задача" : inputValue.title;
-    const topic = !inputValue.topic ? "Research" : inputValue.topic;
-    const status = !inputValue.status ? "Без статуса" : inputValue.status;
+    
+    
+    if (!inputValue.title.trim()) {
+      return setError("Заполните заголовок");
+    }
+    if (!inputValue.description.trim()) {
+      return setError("Заполните поле описания");
+    }
+    if (!selected) {
+      return setError("Выберите дату");
+    }
+    if (!inputValue.topic) {
+      return setError("Выберите категорию");
+    }
+
+    const title = inputValue.title || "Новая задача"
+    const topic = inputValue.topic || "Research"
+    const status = inputValue.status || "Без статуса"
     const newCard = {
       description: inputValue.description,
       title,
       topic,
       status,
-      // date,
+      date: selected,
     };
 
-    if (!inputValue.description) {
-      return setError("Заполните поле описания");
-    }
 
     addNewCardApi({ newCard, token: user.token })
       .then((res) => {
@@ -64,7 +74,9 @@ export const PopNewCard = () => {
           <S.PopNewCardContent>
             <S.PopNewCardTtl>Создание задачи</S.PopNewCardTtl>
             <Link to={paths.MAIN} className="pop-new-card__close">
+              <S.PopNewCardClose>
               ✖
+              </S.PopNewCardClose>
             </Link>
             <S.PopNewCardWrap>
               <S.PopNewCardForm id="formNewCard" action="#">
@@ -106,7 +118,7 @@ export const PopNewCard = () => {
                     value="Web Design"
                     onChange={onChangeInput}
                   />
-                  <S.PopNewCardLabel1 for="radio1">
+                  <S.PopNewCardLabel1 htmlFor="radio1">
                     <p>Web Design</p>
                   </S.PopNewCardLabel1>
                 </div>
@@ -118,7 +130,7 @@ export const PopNewCard = () => {
                     value="Research"
                     onChange={onChangeInput}
                   />
-                  <S.PopNewCardLabel2 for="radio2">
+                  <S.PopNewCardLabel2 htmlFor="radio2">
                     <p>Research</p>
                   </S.PopNewCardLabel2>
                 </div>
@@ -130,7 +142,7 @@ export const PopNewCard = () => {
                     value="Copywriting"
                     onChange={onChangeInput}
                   />
-                  <S.PopNewCardLabel3 for="radio3">
+                  <S.PopNewCardLabel3 htmlFor="radio3">
                     <p>Copywriting</p>
                   </S.PopNewCardLabel3>
                 </div>

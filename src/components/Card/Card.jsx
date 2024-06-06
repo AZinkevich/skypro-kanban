@@ -9,6 +9,7 @@ import {
   CardBtn,
 } from "./Card.styled.js";
 import { Link } from "react-router-dom";
+import { format } from "date-fns";
 
 export const Card = ({ card }) => {
 
@@ -28,9 +29,9 @@ export const Card = ({ card }) => {
           </Link>
         </CardGroup>
         <CardContent>
-          <a href="" target="_blank">
+          
             <CardTitle>{card.title}</CardTitle>
-          </a>
+          
           <CardDate>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +61,7 @@ export const Card = ({ card }) => {
                 </clipPath>
               </defs>
             </svg>
-            <p>{card.date}</p>
+            <p>{format(card.date, "dd.MM.yy")}</p>
           </CardDate>
         </CardContent>
       </CardsCard>
